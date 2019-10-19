@@ -1,13 +1,10 @@
-﻿#define USE_PROXY
-
-#region
+﻿#region
 
 using System;
 using System.IO;
 using Newtonsoft.Json;
 
 #endregion
-
 
 namespace CreepysinStudios.WikiDotNet.Example
 {
