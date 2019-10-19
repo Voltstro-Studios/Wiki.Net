@@ -63,10 +63,12 @@ namespace CreepysinStudios.WikiDotNet
 				new JsonSerializerSettings {ReferenceLoopHandling = ReferenceLoopHandling.Ignore});
 			searchResponse.ResponseMessage = responseMessage;
 
-			//Add the urls to our queries. Very performance heavy, but this is simply a test
+			//Add the urls to our queries
 			for (int i = 0; i < searchResponse.Query.SearchResults.Length; i++)
-				searchResponse.Query.SearchResults[i].Url =JsonConvert.DeserializeObject<dynamic>(Client
-					.GetAsync($"{WikiGetPath}?action=query&format=json&prop=info&pageids={searchResponse.Query.SearchResults[i].PageId}&inprop=url").Result.Content.ReadAsStringAsync().Result).fullurl;
+				//From https://stackoverflow.com/a/9793272
+				searchResponse.Query.SearchResults[i].Url =
+					$"https://en.wikipedia.org/?curid={searchResponse.Query.SearchResults[i].PageId}";
+
 			return searchResponse;
 		}
 

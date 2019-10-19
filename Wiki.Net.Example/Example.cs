@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace CreepysinStudios.WikiDotNet.Example
 {
-	internal static class Program
+	internal static class Example
 	{
 		private static void Main()
 		{
