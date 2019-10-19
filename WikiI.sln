@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wiki.Net", "Wiki.Net\Wiki.Net.csproj", "{C1771F2F-1436-4801-B1D6-73DE270EE133}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wiki.Net.Example", "Wiki.Net.Example\Wiki.Net.Example.csproj", "{6886F44E-4E46-4821-9A5C-A548A7A2D4E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1771F2F-1436-4801-B1D6-73DE270EE133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1771F2F-1436-4801-B1D6-73DE270EE133}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1771F2F-1436-4801-B1D6-73DE270EE133}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1771F2F-1436-4801-B1D6-73DE270EE133}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6886F44E-4E46-4821-9A5C-A548A7A2D4E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6886F44E-4E46-4821-9A5C-A548A7A2D4E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6886F44E-4E46-4821-9A5C-A548A7A2D4E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6886F44E-4E46-4821-9A5C-A548A7A2D4E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
