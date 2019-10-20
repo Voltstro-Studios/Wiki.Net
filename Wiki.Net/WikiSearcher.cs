@@ -68,9 +68,11 @@ namespace CreepysinStudios.WikiDotNet
 
 			//Add the urls to our queries
 			for (int i = 0; i < searchResponse.Query.SearchResults.Length; i++)
+			{
 				//From https://stackoverflow.com/a/9793272
 				searchResponse.Query.SearchResults[i].Url =
 					$"https://en.wikipedia.org/?curid={searchResponse.Query.SearchResults[i].PageId}";
+			}
 
 			return searchResponse;
 		}
