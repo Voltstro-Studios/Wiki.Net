@@ -13,10 +13,8 @@ namespace CreepysinStudios.WikiDotNet.Example
 		private static void Main()
 		{
 			string searchString = AskUserString("Enter a search query");
-
-			bool stripHtml = AskUserBool("Strip HTML tags?");
-
-			WikiSearchResponse response = WikiSearcher.Request(searchString, stripHtml);
+			
+			WikiSearchResponse response = WikiSearcher.Request(searchString);
 
 			File.WriteAllText("./Output.txt", $"{JsonConvert.SerializeObject(response, Formatting.Indented)}");
 
@@ -28,15 +26,6 @@ namespace CreepysinStudios.WikiDotNet.Example
 			}
 
 			Console.ReadLine();
-		}
-
-		private static bool AskUserBool(string message, bool clearConsole = true)
-		{
-			if (clearConsole)
-				Console.Clear();
-			Console.WriteLine(message);
-			// ReSharper disable once AssignNullToNotNullAttribute
-			return bool.Parse(Console.ReadLine());
 		}
 
 		private static string AskUserString(string message, bool clearConsole = true)
