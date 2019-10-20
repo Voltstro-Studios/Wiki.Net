@@ -17,9 +17,9 @@ Searches Wikipedia (duh!) and returns:
 ## Example
 
 ```csharp
-string searchString = “Computer”
+string searchString = “Computer”;
 
-WikiSearchResponse response = WikiSearcher.Request(searchString, true);
+WikiSearchResponse response = WikiSearcher.Request(searchString);
 
 foreach (WikiSearchResult result in response.Query.SearchResults)
 {
