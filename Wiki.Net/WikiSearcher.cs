@@ -1,4 +1,7 @@
-﻿#region
+﻿//Uncomment to 
+//#define DECODE_HTML
+
+#region
 
 using System;
 using System.Collections.Generic;
@@ -8,6 +11,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
 #endregion
+
 
 namespace CreepysinStudios.WikiDotNet
 {
@@ -29,9 +33,8 @@ namespace CreepysinStudios.WikiDotNet
 		/// <summary>
 		/// </summary>
 		/// <param name="searchString"></param>
-		/// <param name="stripHtmlTags"></param>
 		/// <returns></returns>
-		public static WikiSearchResponse Request(string searchString, bool stripHtmlTags = true)
+		public static WikiSearchResponse Request(string searchString)
 		{
 			//Encode our values to be passed to the server
 			FormUrlEncodedContent content = new FormUrlEncodedContent(new[]
@@ -55,7 +58,7 @@ namespace CreepysinStudios.WikiDotNet
 
 			string jsonResult = responseMessage.Content.ReadAsStringAsync().Result;
 
-			if (stripHtmlTags) jsonResult = StripTagsRegex(jsonResult);
+			jsonResult = StripTags(jsonResult);
 
 			Console.WriteLine($"Json Result: {jsonResult}");
 
@@ -72,15 +75,16 @@ namespace CreepysinStudios.WikiDotNet
 			return searchResponse;
 		}
 
-		private static string StripTagsRegex(string source)
+		private static string StripTags(string source)
 		{
-			//Remove html style tags e.g. <br/>
-			string noHtml = Regex.Replace(source, "<.*?>", string.Empty);
-
-			//Remove any escape codes
-			string noEscape = Regex.Replace(noHtml, "((&*;)|(&..))", string.Empty);
-
-			return noEscape;
+			//Turn any characters like '\t' into their actual string version
+			string unescaped = Regex.Unescape(source);
+			//We need to replace any quotes before they get processed by the HTML decoder, or they don't get escaped and deal havoc with the Json
+			unescaped = unescaped.Replace("&quot;", "\\\"");
+			//Decode html entity codes like `&quot;` into their unicode counterparts (e.g. `&quot;` => `"`)
+			string decoded =  WebUtility.HtmlDecode(unescaped);
+			//Remove html formatting tags like <span>, <div> etc.
+			return Regex.Replace(decoded, "<.*?>", string.Empty);
 		}
 	}
 }
