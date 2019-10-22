@@ -38,14 +38,11 @@ namespace CreepysinStudios.WikiDotNet.Example
 
 			#endregion
 
-			//Request a search query and print it
-			PrintResults(AskUserString("Enter a search query"));
-
 			#region Loop until the user exits
 
 			Request:
-			//Get another search from the user, or exit
-			string req = AskUserString("Enter a search query, 'clear' to clear the console or 'exit' or 'quit' to quit", false);
+			//Get a search from the user, or exit
+			string req = AskUserString("Enter a search query, 'clear' to clear the console or 'exit' or 'quit' to quit");
 			// ReSharper disable once SwitchStatementMissingSomeCases
 			switch (req.ToLower())
 			{
@@ -60,6 +57,9 @@ namespace CreepysinStudios.WikiDotNet.Example
 
 			Console.Clear();
 			PrintResults(req);
+			//Wait until the user presses enter to search again
+			Console.WriteLine("Press any key to search again");
+			Console.ReadKey(true);
 			goto Request;
 
 			#endregion

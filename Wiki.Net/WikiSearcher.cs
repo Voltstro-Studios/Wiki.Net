@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -44,6 +45,8 @@ namespace CreepysinStudios.WikiDotNet
 		/// <returns>A list of search results obtained from the Wikipedia API</returns>
 		public static WikiSearchResponse Request(string searchString)
 		{
+			if(string.IsNullOrWhiteSpace(searchString)) throw new ArgumentNullException(nameof(searchString), "A search string must be provided");
+			
 			//Encode our values to be passed to the server
 			FormUrlEncodedContent content = new FormUrlEncodedContent(new[]
 			{
@@ -66,10 +69,8 @@ namespace CreepysinStudios.WikiDotNet
 			string jsonResult = responseMessage.Content.ReadAsStringAsync().Result;
 			jsonResult = StripTags(jsonResult);
 
-			//Deserialize to a temporary variable
-			WikiSearchResponse searchResponse = new WikiSearchResponse
-			(
-				jsonResult, responseMessage,
+			WikiSearchResponse searchResponse = new WikiSearchResponse(jsonResult, responseMessage,
+				//We don't want to keep all of the extra information from our search, so we do some json magic to get the inner property
 				JsonConvert.DeserializeObject<JObject>(jsonResult, JsonSerializerSettings).GetValue("query")
 					.ToObject<JObject>().GetValue("search").ToObject<WikiSearchResult[]>());
 
