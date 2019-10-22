@@ -12,9 +12,9 @@ namespace CreepysinStudios.WikiDotNet.Example
 		private static void Main()
 		{
 			#region Using a proxy for requests
-			
+
 			GetProxy:
-			string useProxy = AskUserString("Use a proxy to connect?",false).ToLower();
+			string useProxy = AskUserString("Use a proxy to connect?", false).ToLower();
 			switch (useProxy)
 			{
 				case "true":
@@ -35,17 +35,17 @@ namespace CreepysinStudios.WikiDotNet.Example
 					Console.WriteLine("Enter a valid response (Y/N or true/false)");
 					goto GetProxy;
 			}
-			
+
 			#endregion
-			
+
 			//Request a search query and print it
 			PrintResults(AskUserString("Enter a search query"));
 
 			#region Loop until the user exits
-			
+
 			Request:
 			//Get another search from the user, or exit
-			string req = AskUserString("Enter another search query, or type 'exit' or 'quit' to quit",false);
+			string req = AskUserString("Enter another search query, or type 'exit' or 'quit' to quit", false);
 			if ((req.ToLower() == "quit") || (req.ToLower() == "exit"))
 			{
 				Console.WriteLine("Exiting...");
@@ -55,7 +55,7 @@ namespace CreepysinStudios.WikiDotNet.Example
 			Console.Clear();
 			PrintResults(req);
 			goto Request;
-			
+
 			#endregion
 		}
 
