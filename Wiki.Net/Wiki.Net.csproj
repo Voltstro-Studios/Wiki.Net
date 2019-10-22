@@ -3,6 +3,21 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
         <RootNamespace>CreepysinStudios.WikiDotNet</RootNamespace>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Wiki.Net</Title>
+        <Authors>Creepysin, EternalClickbait</Authors>
+        <RepositoryUrl>https://github.com/Creepysin-Studios/Wiki.Net</RepositoryUrl>
+        <PackageTags>wiki, wikipedia, API</PackageTags>
+        <PackageLicenseUrl>https://github.com/Creepysin-Studios/Wiki.Net/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\Wiki.Net.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DocumentationFile>bin\Release\Wiki.Net.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
