@@ -41,8 +41,7 @@ namespace CreepysinStudios.WikiDotNet
 		/// <summary>
 		///     The URL that can be used to access the article online. Created using the Page ID
 		/// </summary>
-		//Todo Make this a property instead of assigning it in the wikisearcher class
-		public string Url;
+		public string Url => $"https://en.wikipedia.org/?curid={PageId}";
 
 		/// <summary>
 		///     How many words are in the article
