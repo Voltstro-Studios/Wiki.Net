@@ -8,7 +8,7 @@ using System.Net.Http;
 namespace CreepysinStudios.WikiDotNet
 {
 	/// <summary>
-	///     A class that contains an array of <see cref="WikiSearchResult" />, returned from the wikipedia servers
+	///     A class that contains an array of <see cref="WikiSearchResult" />, returned from the Wikipedia servers
 	/// </summary>
 	public sealed class WikiSearchResponse
 	{
