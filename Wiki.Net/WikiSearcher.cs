@@ -43,7 +43,7 @@ namespace CreepysinStudios.WikiDotNet
 		/// </summary>
 		/// <param name="searchString">The string to search for</param>
 		/// <returns>A list of search results obtained from the Wikipedia API</returns>
-		public static WikiSearchResponse Request(string searchString)
+		public static WikiSearchResponse Search(string searchString)
 		{
 			if(string.IsNullOrWhiteSpace(searchString)) throw new ArgumentNullException(nameof(searchString), "A search string must be provided");
 			
