@@ -10,11 +10,10 @@ using Newtonsoft.Json.Linq;
 
 #endregion
 
-
 namespace CreepysinStudios.WikiDotNet
 {
 	/// <summary>
-	///     Provides functionality for searching wikipedia for string, and returns an array of results
+	///     Provides functionality for searching Wikipedia for string, and returns an array of results
 	/// </summary>
 	public static class WikiSearcher
 	{
@@ -25,7 +24,7 @@ namespace CreepysinStudios.WikiDotNet
 		private static readonly HttpClientHandler Handler = new HttpClientHandler();
 		private static readonly HttpClient Client = new HttpClient(Handler);
 
-		//Todo Is reference loop handling necessary?
+		//TODO: Is reference loop handling necessary?
 		private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
 			{ReferenceLoopHandling = ReferenceLoopHandling.Ignore};
 
@@ -49,6 +48,7 @@ namespace CreepysinStudios.WikiDotNet
 				throw new ArgumentNullException(nameof(searchString), "A search string must be provided");
 
 			//Encode our values to be passed to the server
+#pragma warning disable IDE0067 // Dispose objects before losing scope
 			FormUrlEncodedContent content = new FormUrlEncodedContent(new[]
 			{
 				//Get results in Json
@@ -61,6 +61,7 @@ namespace CreepysinStudios.WikiDotNet
 				new KeyValuePair<string, string>("list", "search"),
 				new KeyValuePair<string, string>("srsearch", searchString)
 			});
+#pragma warning restore IDE0067 // Dispose objects before losing scope
 
 			//And add them to our url
 			string url = $"{WikiGetPath}?{content.ReadAsStringAsync().Result}";
@@ -79,7 +80,7 @@ namespace CreepysinStudios.WikiDotNet
 		}
 
 		/// <summary>
-		///     Removes any HTML formatting tags and unescapes HTML entity codes and
+		///     Removes any HTML formatting tags and unescaped HTML entity codes and
 		/// </summary>
 		/// <param name="source">The source string to format</param>
 		/// <returns>A Json-parser friendly string with any html tags removed</returns>
