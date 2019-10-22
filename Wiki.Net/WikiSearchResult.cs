@@ -10,13 +10,15 @@ namespace CreepysinStudios.WikiDotNet
 	/// <summary>
 	///     A single search result from a wikipedia search
 	/// </summary>
+	
+	//Todo Add what categories the article falls into
+	//!Make things readonly if possible
 	public sealed class WikiSearchResult
 	{
 		/// <summary>
 		///     The last time this page was edited
 		/// </summary>
 		[JsonProperty("timestamp")] public DateTime LastEdited;
-		//Todo Add what categories the article falls into
 
 		/// <summary>
 		///     The numerical ID that corresponds internally (in Wikipedia's servers) to this page

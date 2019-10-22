@@ -15,25 +15,18 @@ namespace CreepysinStudios.WikiDotNet
 {
 	public sealed class WikiSearchResponse
 	{
+		//!Create a constructor and make fields readonly
 		/// <summary>
 		///     The Json string from which the results were taken
 		/// </summary>
 		public string JsonResult;
 
-		//!Instead of having multiple nested objects, place the results directly in this
-		/// <summary>
-		///     The Query result, parsed from the json returned by the search
-		/// </summary>
-		public WikiQuery Query;
+		public WikiSearchResult[] SearchResults;
 
 		/// <summary>
-		///     The response message from which the <see cref="Query" /> and <see cref="JsonResult" /> are parsed
+		///     The response message from which the <see cref="SearchResults" /> and <see cref="JsonResult" /> are parsed
 		/// </summary>
 		public HttpResponseMessage ResponseMessage;
 
-		public sealed class WikiQuery
-		{
-			[JsonProperty("search")] public WikiSearchResult[] SearchResults;
-		}
 	}
 }
