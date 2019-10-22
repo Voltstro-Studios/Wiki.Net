@@ -45,11 +45,17 @@ namespace CreepysinStudios.WikiDotNet.Example
 
 			Request:
 			//Get another search from the user, or exit
-			string req = AskUserString("Enter another search query, or type 'exit' or 'quit' to quit", false);
-			if ((req.ToLower() == "quit") || (req.ToLower() == "exit"))
+			string req = AskUserString("Enter a search query, 'clear' to clear the console or 'exit' or 'quit' to quit", false);
+			// ReSharper disable once SwitchStatementMissingSomeCases
+			switch (req.ToLower())
 			{
-				Console.WriteLine("Exiting...");
-				return;
+				case "quit":
+				case "exit":
+					Console.WriteLine("Exiting...");
+					return;
+				case "clear":
+					Console.Clear();
+					goto Request;
 			}
 
 			Console.Clear();

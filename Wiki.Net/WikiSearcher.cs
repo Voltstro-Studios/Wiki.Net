@@ -68,12 +68,10 @@ namespace CreepysinStudios.WikiDotNet
 
 			//Deserialize to a temporary variable
 			WikiSearchResponse searchResponse = new WikiSearchResponse
-			{
-				ResponseMessage = responseMessage, JsonResult = jsonResult,
-				//Get our search. We only want an inner section; we don't need the rest
-				SearchResults = JsonConvert.DeserializeObject<JObject>(jsonResult, JsonSerializerSettings)
-					.GetValue("query").ToObject<JObject>().GetValue("search").ToObject<WikiSearchResult[]>()
-			};
+			(
+				jsonResult, responseMessage,
+				JsonConvert.DeserializeObject<JObject>(jsonResult, JsonSerializerSettings).GetValue("query")
+					.ToObject<JObject>().GetValue("search").ToObject<WikiSearchResult[]>());
 
 			return searchResponse;
 		}
