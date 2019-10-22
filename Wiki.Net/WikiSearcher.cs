@@ -48,8 +48,8 @@ namespace CreepysinStudios.WikiDotNet
 				throw new ArgumentNullException(nameof(searchString), "A search string must be provided");
 
 			//Encode our values to be passed to the server
-#pragma warning disable IDE0067 // Dispose objects before losing scope
-			FormUrlEncodedContent content = new FormUrlEncodedContent(new[]
+			string url;
+			using (FormUrlEncodedContent content = new FormUrlEncodedContent(new[]
 			{
 				//Get results in Json
 				new KeyValuePair<string, string>("format", "json"),
@@ -58,13 +58,11 @@ namespace CreepysinStudios.WikiDotNet
 				//Give errors in plain text
 				new KeyValuePair<string, string>("errorformat", "plaintext"),
 				//Our search params
-				new KeyValuePair<string, string>("list", "search"),
-				new KeyValuePair<string, string>("srsearch", searchString)
-			});
-#pragma warning restore IDE0067 // Dispose objects before losing scope
-
-			//And add them to our url
-			string url = $"{WikiGetPath}?{content.ReadAsStringAsync().Result}";
+				new KeyValuePair<string, string>("list", "search"), new KeyValuePair<string, string>("srsearch", searchString)
+			}))
+			{
+				url = $"{WikiGetPath}?{content.ReadAsStringAsync().Result}";
+			}
 
 			//Get a response from the server
 			HttpResponseMessage responseMessage = Client.GetAsync(url).Result;
