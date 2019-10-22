@@ -1,6 +1,7 @@
 # Wiki.Net
 
-[![License](https://img.shields.io/github/license/Creepysin-Studios/Wiki.Net)](/LICENSE) [![Discord](https://img.shields.io/badge/Discord-Creepysin-7289da.svg?logo=discord)](https://discord.creepysin.com)
+[![License](https://img.shields.io/github/license/Creepysin-Studios/Wiki.Net)](/LICENSE) [![Requirements Status](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements.svg?branch=master)](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements/?branch=master) [![NuGet](https://img.shields.io/nuget/v/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/) 
+[![Nuget](https://img.shields.io/nuget/dt/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/) [![Discord](https://img.shields.io/badge/Discord-Creepysin-7289da.svg?logo=discord)](https://discord.creepysin.com)
 
 Wiki.Net – An unofficial C# Wikipedia API
 
@@ -14,7 +15,19 @@ Searches Wikipedia (duh!) and returns:
 * Text Preview
 * URL of page
 
-## Example
+## Getting Started
+
+### Installation
+
+You can install via NuGet using the package manager command:
+
+```
+Install-Package Wiki.Net -Version 1.0.0
+```
+
+You can also download the binaries from the [releases](https://github.com/Creepysin-Studios/Wiki.Net/releases).
+
+### Example
 
 ```csharp
 string searchString = “Computer”;
