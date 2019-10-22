@@ -67,7 +67,7 @@ namespace CreepysinStudios.WikiDotNet.Example
 
 		private static void PrintResults(string searchString)
 		{
-			WikiSearchResponse response = WikiSearcher.Request(searchString);
+			WikiSearchResponse response = WikiSearcher.Search(searchString);
 
 			Console.WriteLine($"\nResults found ({searchString}):\n");
 			for (int i = 0; i < response.SearchResults.Length; i++)
