@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 #endregion
 
@@ -65,13 +66,15 @@ namespace CreepysinStudios.WikiDotNet
 			string jsonResult = responseMessage.Content.ReadAsStringAsync().Result;
 			jsonResult = StripTags(jsonResult);
 
-			//Deserialize our response
-			//!Make this go into a temporary dynamic, then copy the results into this. Maybe use JObject not dynamic
-			WikiSearchResponse searchResponse =
-				JsonConvert.DeserializeObject<WikiSearchResponse>(jsonResult, JsonSerializerSettings);
-			searchResponse.ResponseMessage = responseMessage;
-			searchResponse.JsonResult = jsonResult;
-			
+			//Deserialize to a temporary variable
+			WikiSearchResponse searchResponse = new WikiSearchResponse
+			{
+				ResponseMessage = responseMessage, JsonResult = jsonResult,
+				//Get our search. We only want an inner section; we don't need the rest
+				SearchResults = JsonConvert.DeserializeObject<JObject>(jsonResult, JsonSerializerSettings)
+					.GetValue("query").ToObject<JObject>().GetValue("search").ToObject<WikiSearchResult[]>()
+			};
+
 			return searchResponse;
 		}
 
