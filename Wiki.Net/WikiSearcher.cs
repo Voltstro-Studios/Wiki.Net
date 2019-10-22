@@ -45,8 +45,9 @@ namespace CreepysinStudios.WikiDotNet
 		/// <returns>A list of search results obtained from the Wikipedia API</returns>
 		public static WikiSearchResponse Search(string searchString)
 		{
-			if(string.IsNullOrWhiteSpace(searchString)) throw new ArgumentNullException(nameof(searchString), "A search string must be provided");
-			
+			if (string.IsNullOrWhiteSpace(searchString))
+				throw new ArgumentNullException(nameof(searchString), "A search string must be provided");
+
 			//Encode our values to be passed to the server
 			FormUrlEncodedContent content = new FormUrlEncodedContent(new[]
 			{
