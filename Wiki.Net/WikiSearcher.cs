@@ -1,10 +1,8 @@
 ﻿#region
 
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
@@ -14,7 +12,7 @@ using Newtonsoft.Json;
 namespace CreepysinStudios.WikiDotNet
 {
 	/// <summary>
-	/// Provides functionality for searching wikipedia for string, and returns an array of results
+	///     Provides functionality for searching wikipedia for string, and returns an array of results
 	/// </summary>
 	public static class WikiSearcher
 	{
@@ -25,6 +23,10 @@ namespace CreepysinStudios.WikiDotNet
 		private static readonly HttpClientHandler Handler = new HttpClientHandler();
 		private static readonly HttpClient Client = new HttpClient(Handler);
 
+		//Todo Is reference loop handling necessary?
+		private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
+			{ReferenceLoopHandling = ReferenceLoopHandling.Ignore};
+
 		/// <summary>
 		///     An optional proxy to route HTTP requests through when searching
 		/// </summary>
@@ -34,10 +36,6 @@ namespace CreepysinStudios.WikiDotNet
 			set => Handler.Proxy = value;
 		}
 
-		//Todo Is reference loop handling necessary?
-		private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
-			{ReferenceLoopHandling = ReferenceLoopHandling.Ignore};
-		
 		/// <summary>
 		///     Searches Wikipedia using the given <paramref name="searchString" />
 		/// </summary>
@@ -66,13 +64,14 @@ namespace CreepysinStudios.WikiDotNet
 			HttpResponseMessage responseMessage = Client.GetAsync(url).Result;
 			string jsonResult = responseMessage.Content.ReadAsStringAsync().Result;
 			jsonResult = StripTags(jsonResult);
-			
+
 			//Deserialize our response
 			//!Make this go into a temporary dynamic, then copy the results into this. Maybe use JObject not dynamic
-			WikiSearchResponse searchResponse = JsonConvert.DeserializeObject<WikiSearchResponse>(jsonResult, JsonSerializerSettings);
+			WikiSearchResponse searchResponse =
+				JsonConvert.DeserializeObject<WikiSearchResponse>(jsonResult, JsonSerializerSettings);
 			searchResponse.ResponseMessage = responseMessage;
 			searchResponse.JsonResult = jsonResult;
-			
+
 			//Add the urls to our queries
 			for (int i = 0; i < searchResponse.Query.SearchResults.Length; i++)
 				//From https://stackoverflow.com/a/9793272
