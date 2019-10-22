@@ -42,7 +42,7 @@ namespace CreepysinStudios.WikiDotNet.Example
 
 			Request:
 			//Get a search from the user, or exit
-			string req = AskUserString("Enter a search query, 'clear' to clear the console or 'exit' or 'quit' to quit");
+			string req = AskUserString("Enter a search query, 'exit' or 'quit' to quit");
 			// ReSharper disable once SwitchStatementMissingSomeCases
 			switch (req.ToLower())
 			{
@@ -50,9 +50,6 @@ namespace CreepysinStudios.WikiDotNet.Example
 				case "exit":
 					Console.WriteLine("Exiting...");
 					return;
-				case "clear":
-					Console.Clear();
-					goto Request;
 			}
 
 			Console.Clear();
