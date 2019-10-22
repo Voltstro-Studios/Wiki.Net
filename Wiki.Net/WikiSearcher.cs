@@ -83,12 +83,10 @@ namespace CreepysinStudios.WikiDotNet
 		/// <returns>A Json-parser friendly string with any html tags removed</returns>
 		private static string StripTags(string source)
 		{
-			//Turn any characters like '\t' into their actual string version
-			string unescaped = Regex.Unescape(source);
 			//We need to replace any quotes before they get processed by the HTML decoder, or they don't get escaped and deal havoc with the Json
-			unescaped = unescaped.Replace("&quot;", "\\\"");
+			string unquoted = source.Replace("&quot;", "\\\"");
 			//Decode html entity codes like `&quot;` into their unicode counterparts (e.g. `&quot;` => `"`)
-			string decoded = WebUtility.HtmlDecode(unescaped);
+			string decoded = WebUtility.HtmlDecode(unquoted);
 			//Remove html formatting tags like <span>, <div> etc.
 			return Regex.Replace(decoded, "<.*?>", string.Empty);
 		}
