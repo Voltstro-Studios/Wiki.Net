@@ -68,7 +68,7 @@ namespace CreepysinStudios.WikiDotNet.Example
 			{
 				WikiSearchResult result = response.Query.SearchResults[i];
 				Console.WriteLine(
-					$"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url}\n\tLast edited at{}");
+					$"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url}\n\tLast edited at {result.LastEdited}");
 			}
 		}
 
