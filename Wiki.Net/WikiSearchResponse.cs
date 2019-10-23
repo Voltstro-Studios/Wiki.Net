@@ -33,7 +33,7 @@ namespace CreepysinStudios.WikiDotNet
 		/// <param name="jsonResult">The Json string used to parse the search results</param>
 		/// <param name="responseMessage">The <see cref="HttpResponseMessage" /> that was returned from the server</param>
 		/// <param name="searchResults">An array of parsed search results</param>
-		public WikiSearchResponse(string jsonResult,
+		internal WikiSearchResponse(string jsonResult,
 			HttpResponseMessage responseMessage, WikiSearchResult[] searchResults)
 		{
 			JsonResult = jsonResult ?? throw new ArgumentNullException(nameof(jsonResult));
