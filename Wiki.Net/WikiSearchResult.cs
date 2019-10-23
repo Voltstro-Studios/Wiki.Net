@@ -12,7 +12,6 @@ namespace CreepysinStudios.WikiDotNet
 	/// </summary>
 
 	//TODO: Add what categories the article falls into
-	//!Make things readonly if possible
 	public sealed class WikiSearchResult
 	{
 		/// <summary>
@@ -23,6 +22,7 @@ namespace CreepysinStudios.WikiDotNet
 		/// <summary>
 		///     The numerical ID that corresponds internally (in Wikipedia's servers) to this page
 		/// </summary>
+		// ReSharper disable once StringLiteralTypo
 		[JsonProperty("pageid")] public readonly int PageId;
 
 		/// <summary>
@@ -30,7 +30,7 @@ namespace CreepysinStudios.WikiDotNet
 		/// </summary>
 		[JsonProperty("snippet")] public readonly string Preview;
 
-		//TODO: Find out what 'size'' is (Assumed bytes at the moment)
+		//TODO: Find out what 'size' is (Assumed bytes at the moment)
 		/// <summary>
 		///     (Possibly) How large the entire page is (assumed in bytes). Unknown what this actually is/does.
 		/// </summary>
@@ -44,6 +44,7 @@ namespace CreepysinStudios.WikiDotNet
 		/// <summary>
 		///     How many words are in the article
 		/// </summary>
+		// ReSharper disable once StringLiteralTypo
 		[JsonProperty("wordcount")] public readonly int WordCount;
 
 		/// <summary>

@@ -17,22 +17,33 @@ namespace CreepysinStudios.WikiDotNet
 	/// </summary>
 	public static class WikiSearcher
 	{
-		//The path we use to get results from
+		/// <summary>
+		///     The path we use to get results from
+		/// </summary>
 		private const string WikiGetPath = "https://en.wikipedia.org/w/api.php";
 
 		//Our HttpClient and handler that we use to request our information
+		/// <summary>
+		///     The <see cref="HttpClientHandler" /> that we use to request our information
+		/// </summary>
 		private static readonly HttpClientHandler Handler = new HttpClientHandler();
+
+		/// <summary>
+		///     The <see cref="HttpClient" /> that we use to request our information
+		/// </summary>
 		private static readonly HttpClient Client = new HttpClient(Handler);
 
-		//TODO: Is reference loop handling necessary?
-		private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
-			{ReferenceLoopHandling = ReferenceLoopHandling.Ignore};
+		/// <summary>
+		///     The <see cref="JsonSerializerSettings" /> that are used during deserialization
+		/// </summary>
+		private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings();
 
 		/// <summary>
 		///     An optional proxy to route HTTP requests through when searching
 		/// </summary>
 		public static IWebProxy Proxy
 		{
+			// ReSharper disable once UnusedMember.Global
 			get => Handler.Proxy;
 			set => Handler.Proxy = value;
 		}
@@ -51,6 +62,8 @@ namespace CreepysinStudios.WikiDotNet
 			string url;
 			using (FormUrlEncodedContent content = new FormUrlEncodedContent(new[]
 			{
+				// ReSharper disable StringLiteralTypo
+
 				//Get results in Json
 				new KeyValuePair<string, string>("format", "json"),
 				//Query the Wiki API
@@ -58,7 +71,10 @@ namespace CreepysinStudios.WikiDotNet
 				//Give errors in plain text
 				new KeyValuePair<string, string>("errorformat", "plaintext"),
 				//Our search params
-				new KeyValuePair<string, string>("list", "search"), new KeyValuePair<string, string>("srsearch", searchString)
+				new KeyValuePair<string, string>("list", "search"),
+				new KeyValuePair<string, string>("srsearch", searchString)
+
+				// ReSharper restore StringLiteralTypo
 			}))
 			{
 				url = $"{WikiGetPath}?{content.ReadAsStringAsync().Result}";
