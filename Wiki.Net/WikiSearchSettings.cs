@@ -12,6 +12,7 @@ namespace CreepysinStudios.WikiDotNet
 	/// </summary>
 	public sealed class WikiSearchSettings
 	{
+		//TODO: Add search location enum (Title,Text,NearMatch etc)
 		/// <summary>
 		///     [Backing Field] How many results to return
 		/// </summary>
@@ -27,7 +28,7 @@ namespace CreepysinStudios.WikiDotNet
 			set
 			{
 				const int min = 1;
-				const int max = 500;
+				const int max = 50;
 				if ((value > min) || (value > max))
 					throw new ArgumentOutOfRangeException(nameof(value),
 						$"Value {value} is out of range. Valid range is {min}-{max}");
@@ -39,7 +40,10 @@ namespace CreepysinStudios.WikiDotNet
 		///     An amount to offset the search results by. Useful when scrolling through large groups of pages
 		/// </summary>
 		public int ResultOffset { get; set; } = 0;
-		
-		
+
+		/// <summary>
+		/// A string that will be returned with the request results. Useful to distinguish multiple requests
+		/// </summary>
+		public string RequestId { get; set; } = null;
 	}
 }
