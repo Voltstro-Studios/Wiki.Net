@@ -17,11 +17,6 @@ namespace CreepysinStudios.WikiDotNet
 	/// </summary>
 	public static class WikiSearcher
 	{
-		/// <summary>
-		///     The path we use to get results from
-		/// </summary>
-		private const string WikiGetPath = "https://en.wikipedia.org/w/api.php";
-
 		//Our HttpClient and handler that we use to request our information
 		/// <summary>
 		///     The <see cref="HttpClientHandler" /> that we use to request our information
@@ -39,6 +34,11 @@ namespace CreepysinStudios.WikiDotNet
 		private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings();
 
 		/// <summary>
+		///     The path we use to get results from
+		/// </summary>
+		private static string WikiGetPath => $"{(UseHttps ? "https://" : "http://")}en.wikipedia.org/w/api.php";
+
+		/// <summary>
 		///     An optional proxy to route HTTP requests through when searching
 		/// </summary>
 		public static IWebProxy Proxy
@@ -49,33 +49,49 @@ namespace CreepysinStudios.WikiDotNet
 		}
 
 		/// <summary>
+		///     If we should use HTTPS for web requests or HTTP
+		/// </summary>
+		public static bool UseHttps { get; set; } = true;
+
+		/// <summary>
 		///     Searches Wikipedia using the given <paramref name="searchString" />
 		/// </summary>
 		/// <param name="searchString">The string to search for</param>
+		/// <param name="searchSettings">An optional set of settings to </param>
 		/// <returns>A list of search results obtained from the Wikipedia API</returns>
-		public static WikiSearchResponse Search(string searchString)
+		public static WikiSearchResponse Search(string searchString, WikiSearchSettings searchSettings = null)
 		{
 			if (string.IsNullOrWhiteSpace(searchString))
 				throw new ArgumentNullException(nameof(searchString), "A search string must be provided");
 
 			//Encode our values to be passed to the server
 			string url;
-			using (FormUrlEncodedContent content = new FormUrlEncodedContent(new[]
+			Dictionary<string, string> args = new Dictionary<string, string>
 			{
 				// ReSharper disable StringLiteralTypo
 
-				//Get results in Json
-				new KeyValuePair<string, string>("format", "json"),
 				//Query the Wiki API
-				new KeyValuePair<string, string>("action", "query"),
-				//Give errors in plain text
-				new KeyValuePair<string, string>("errorformat", "plaintext"),
+				["action"] = "query",
+				["list"] = "search",
 				//Our search params
-				new KeyValuePair<string, string>("list", "search"),
-				new KeyValuePair<string, string>("srsearch", searchString)
-
+				["srsearch"] = searchString,
+				//Get results in Json
+				["format"] = "json",
+				//Give errors in plain text
+				["errorformat"] = "plaintext",
+	
 				// ReSharper restore StringLiteralTypo
-			}))
+			};
+			
+			if(searchSettings != null)
+			{
+				//Limit our results, and offset if required
+				args.Add("srlimit", searchSettings.ResultLimit.ToString());
+				args.Add("sroffset", searchSettings.ResultOffset.ToString());
+				args.Add("requestid", searchSettings.RequestId);
+			}
+			
+			using (FormUrlEncodedContent content = new FormUrlEncodedContent(args))
 			{
 				url = $"{WikiGetPath}?{content.ReadAsStringAsync().Result}";
 			}
