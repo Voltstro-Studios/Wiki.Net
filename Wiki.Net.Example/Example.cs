@@ -40,6 +40,8 @@ namespace CreepysinStudios.WikiDotNet.Example
 
 			#region Loop until the user exits
 
+			WikiSearchSettings searchSettings = new WikiSearchSettings
+				{RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2};
 			Request:
 			//Get a search from the user, or exit
 			string req = AskUserString("Enter a search query, 'exit' or 'quit' to quit");
@@ -53,7 +55,7 @@ namespace CreepysinStudios.WikiDotNet.Example
 			}
 
 			Console.Clear();
-			PrintResults(req);
+			PrintResults(req, searchSettings);
 			//Wait until the user presses enter to search again
 			Console.WriteLine("Press any key to search again");
 			Console.ReadKey(true);
@@ -62,9 +64,9 @@ namespace CreepysinStudios.WikiDotNet.Example
 			#endregion
 		}
 
-		private static void PrintResults(string searchString)
+		private static void PrintResults(string searchString, WikiSearchSettings searchSettings = null)
 		{
-			WikiSearchResponse response = WikiSearcher.Search(searchString);
+			WikiSearchResponse response = WikiSearcher.Search(searchString, searchSettings);
 
 			Console.WriteLine($"\nResults found ({searchString}):\n");
 			for (int i = 0; i < response.SearchResults.Length; i++)
