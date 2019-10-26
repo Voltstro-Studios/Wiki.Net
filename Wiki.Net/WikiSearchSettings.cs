@@ -29,7 +29,7 @@ namespace CreepysinStudios.WikiDotNet
 			{
 				const int min = 1;
 				const int max = 50;
-				if ((value > min) || (value > max))
+				if (value < min || value > max)
 					throw new ArgumentOutOfRangeException(nameof(value),
 						$"Value {value} is out of range. Valid range is {min}-{max}");
 				resultLimit = value;
@@ -42,7 +42,7 @@ namespace CreepysinStudios.WikiDotNet
 		public int ResultOffset { get; set; } = 0;
 
 		/// <summary>
-		/// A string that will be returned with the request results. Useful to distinguish multiple requests
+		///     A string that will be returned with the request results. Useful to distinguish multiple requests
 		/// </summary>
 		public string RequestId { get; set; } = null;
 	}

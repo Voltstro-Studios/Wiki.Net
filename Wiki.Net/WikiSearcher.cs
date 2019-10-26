@@ -17,7 +17,6 @@ namespace CreepysinStudios.WikiDotNet
 	/// </summary>
 	public static class WikiSearcher
 	{
-		//Our HttpClient and handler that we use to request our information
 		/// <summary>
 		///     The <see cref="HttpClientHandler" /> that we use to request our information
 		/// </summary>
@@ -78,19 +77,19 @@ namespace CreepysinStudios.WikiDotNet
 				//Get results in Json
 				["format"] = "json",
 				//Give errors in plain text
-				["errorformat"] = "plaintext",
-	
+				["errorformat"] = "plaintext"
+
 				// ReSharper restore StringLiteralTypo
 			};
-			
-			if(searchSettings != null)
+
+			if (searchSettings != null)
 			{
 				//Limit our results, and offset if required
 				args.Add("srlimit", searchSettings.ResultLimit.ToString());
 				args.Add("sroffset", searchSettings.ResultOffset.ToString());
 				args.Add("requestid", searchSettings.RequestId);
 			}
-			
+
 			using (FormUrlEncodedContent content = new FormUrlEncodedContent(args))
 			{
 				url = $"{WikiGetPath}?{content.ReadAsStringAsync().Result}";
