@@ -100,8 +100,7 @@ namespace CreepysinStudios.WikiDotNet
 			string jsonResult = responseMessage.Content.ReadAsStringAsync().Result;
 			jsonResult = StripTags(jsonResult);
 
-			WikiSearchResponse searchResponse = new WikiSearchResponse(jsonResult, responseMessage,
-				//We don't want to keep all of the extra information from our search, so we do some json magic to get the inner property
+			WikiSearchResponse searchResponse = new WikiSearchResponse(//We don't want to keep all of the extra information from our search, so we do some json magic to get the inner property
 				JsonConvert.DeserializeObject<JObject>(jsonResult, JsonSerializerSettings).GetValue("query")
 					.ToObject<JObject>().GetValue("search").ToObject<WikiSearchResult[]>());
 
