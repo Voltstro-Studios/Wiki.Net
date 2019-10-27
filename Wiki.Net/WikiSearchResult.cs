@@ -10,10 +10,10 @@ namespace CreepysinStudios.WikiDotNet
 	/// <summary>
 	///     A single search result from a Wikipedia search
 	/// </summary>
-
 	//TODO: Add what categories the article falls into
 	public sealed class WikiSearchResult
 	{
+		[JsonProperty("ns")] public readonly int Ns;
 		/// <summary>
 		///     The last time this page was edited
 		/// </summary>

@@ -39,11 +39,11 @@ namespace CreepysinStudios.WikiDotNet
 		/// <summary>
 		///     An amount to offset the search results by. Useful when scrolling through large groups of pages
 		/// </summary>
-		public int ResultOffset { get; set; } = 0;
+		public int ResultOffset { get; set; }
 
 		/// <summary>
 		///     A string that will be returned with the request results. Useful to distinguish multiple requests
 		/// </summary>
-		public string RequestId { get; set; } = null;
+		public string RequestId { get; set; }
 	}
 }
