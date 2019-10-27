@@ -1,6 +1,6 @@
 ﻿#region
 
-using System;
+using Newtonsoft.Json;
 
 #endregion
 
@@ -11,18 +11,26 @@ namespace CreepysinStudios.WikiDotNet
 	/// </summary>
 	public sealed class WikiSearchResponse
 	{
+		[JsonProperty("query")] public readonly WikiSearchQuery Query;
+
 		/// <summary>
-		///     An array of results returned from the wikipedia servers
+		///     The Request ID that was passed during the request
 		/// </summary>
-		public readonly WikiSearchResult[] SearchResults;
+		[JsonProperty("requestid")] public readonly string RequestId;
 		
-		/// <summary>
-		///     A constructor that creates a new <see cref="WikiSearchResponse" />
-		/// </summary>
-		/// <param name="searchResults">An array of parsed search results</param>
-		internal WikiSearchResponse(WikiSearchResult[] searchResults)
+		public sealed class WikiSearchQuery
 		{
-			SearchResults = searchResults ?? throw new ArgumentNullException(nameof(searchResults));
+			/// <summary>
+			///     An array of results returned from the wikipedia servers
+			/// </summary>
+			[JsonProperty("search")] public readonly WikiSearchResult[] SearchResults;
+
+			[JsonProperty("searchinfo")] public readonly SearchInfo SearchInfo;
+		}
+
+		public class SearchInfo
+		{
+			[JsonProperty("totalhits")] public int TotalHits;
 		}
 	}
 }

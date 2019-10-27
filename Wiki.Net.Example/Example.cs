@@ -69,9 +69,8 @@ namespace CreepysinStudios.WikiDotNet.Example
 			WikiSearchResponse response = WikiSearcher.Search(searchString, searchSettings);
 
 			Console.WriteLine($"\nResults found ({searchString}):\n");
-			for (int i = 0; i < response.SearchResults.Length; i++)
+			foreach (WikiSearchResult result in response.Query.SearchResults)
 			{
-				WikiSearchResult result = response.SearchResults[i];
 				Console.WriteLine(
 					$"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url}\n\tLast edited at {result.LastEdited}\n");
 			}
