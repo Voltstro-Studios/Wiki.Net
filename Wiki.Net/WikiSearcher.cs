@@ -99,7 +99,8 @@ namespace CreepysinStudios.WikiDotNet
 			string jsonResult = responseMessage.Content.ReadAsStringAsync().Result;
 			jsonResult = StripTags(jsonResult);
 
-			WikiSearchResponse searchResponse = JsonConvert.DeserializeObject<WikiSearchResponse>(jsonResult, JsonSerializerSettings);
+			WikiSearchResponse searchResponse =
+				JsonConvert.DeserializeObject<WikiSearchResponse>(jsonResult, JsonSerializerSettings);
 
 			return searchResponse;
 		}
