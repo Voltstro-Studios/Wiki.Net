@@ -90,7 +90,8 @@ namespace CreepysinStudios.WikiDotNet
 				args.Add("srlimit", searchSettings.ResultLimit.ToString());
 				args.Add("sroffset", searchSettings.ResultOffset.ToString());
 				//If the namespaces list is null use "*" which means all of them
-				args.Add("srnamespace",searchSettings.Namespaces == null ? "*" :  string.Join('|', searchSettings.Namespaces));
+				args.Add("srnamespace",
+					searchSettings.Namespaces == null ? "*" : string.Join('|', searchSettings.Namespaces));
 				//If we should search for the exact string
 				args.Add("srwhat", searchSettings.ExactMatch ? "nearmatch" : "text");
 				//Get which server we were served by
