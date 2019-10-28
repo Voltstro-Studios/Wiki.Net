@@ -49,6 +49,8 @@ namespace CreepysinStudios.WikiDotNet
 		/// <summary>
 		///     If we should use HTTPS for web requests or HTTP
 		/// </summary>
+		// ReSharper disable once MemberCanBePrivate.Global
+		// ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
 		public static bool UseHttps { get; set; } = true;
 
 		/// <summary>

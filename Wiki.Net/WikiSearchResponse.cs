@@ -22,16 +22,19 @@ namespace CreepysinStudios.WikiDotNet
 		/// <summary>
 		///     The Request ID that was passed during the request
 		/// </summary>
+		// ReSharper disable once StringLiteralTypo
 		[JsonProperty("requestid")] public readonly string RequestId;
 
 		/// <summary>
 		///     The Wikipedia server that this request was served by
 		/// </summary>
+		// ReSharper disable once StringLiteralTypo
 		[JsonProperty("servedby")] public readonly string ServedBy;
 
 		/// <summary>
 		///     The time at which the Wikipedia server received the search request
 		/// </summary>
+		// ReSharper disable once StringLiteralTypo
 		[JsonProperty("curtimestamp")] public readonly DateTime Timestamp;
 	}
 }

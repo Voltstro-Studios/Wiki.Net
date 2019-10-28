@@ -16,9 +16,9 @@ namespace CreepysinStudios.WikiDotNet
 		/// <summary>
 		///     What namespaces to search in. Default is {0} (default)
 		/// </summary>
+		// ReSharper disable once FieldCanBeMadeReadOnly.Global
 		public List<int> Namespaces = null;
 
-		//TODO: Add search location enum (Title,Text,NearMatch etc)
 		/// <summary>
 		///     [Backing Field] How many results to return
 		/// </summary>
@@ -52,12 +52,14 @@ namespace CreepysinStudios.WikiDotNet
 		/// </summary>
 		public string RequestId { get; set; }
 
+		// ReSharper disable once CommentTypo
 		/// <summary>
 		///     Should we only find results that exactly match our search
 		///     Example:
 		///     'Microsoft' results in 'Microsoft'
 		///     'Microsof' results in 'no results'
 		/// </summary>
+		// ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
 		public bool ExactMatch { get; set; } = false;
 	}
 }
