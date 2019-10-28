@@ -6,7 +6,6 @@ using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 #endregion
 
@@ -100,7 +99,7 @@ namespace CreepysinStudios.WikiDotNet
 			string jsonResult = responseMessage.Content.ReadAsStringAsync().Result;
 			jsonResult = StripTags(jsonResult);
 
-			WikiSearchResponse searchResponse = JsonConvert.DeserializeObject<WikiSearchResponse>(jsonResult);
+			WikiSearchResponse searchResponse = JsonConvert.DeserializeObject<WikiSearchResponse>(jsonResult, JsonSerializerSettings);
 
 			return searchResponse;
 		}
