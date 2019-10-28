@@ -56,6 +56,7 @@ namespace CreepysinStudios.WikiDotNet
 		/// </summary>
 		/// <param name="searchString">The string to search for</param>
 		/// <param name="searchSettings">An optional set of settings to </param>
+		/// <exception cref="ArgumentOutOfRangeException"></exception>
 		/// <returns>A list of search results obtained from the Wikipedia API</returns>
 		public static WikiSearchResponse Search(string searchString, WikiSearchSettings searchSettings = null)
 		{
@@ -83,10 +84,23 @@ namespace CreepysinStudios.WikiDotNet
 
 			if (searchSettings != null)
 			{
+				// ReSharper disable StringLiteralTypo
+
 				//Limit our results, and offset if required
 				args.Add("srlimit", searchSettings.ResultLimit.ToString());
 				args.Add("sroffset", searchSettings.ResultOffset.ToString());
-				args.Add("requestid", searchSettings.RequestId);
+				//If the namespaces list is null use "*" which means all of them
+				args.Add("srnamespace",searchSettings.Namespaces == null ? "*" :  string.Join('|', searchSettings.Namespaces));
+				//If we should search for the exact string
+				args.Add("srwhat", searchSettings.ExactMatch ? "nearmatch" : "text");
+				//Get which server we were served by
+				args.Add("servedby", "true");
+				//Request the current timestamp be included
+				args.Add("curtimestamp", "true");
+				if (searchSettings.RequestId != null)
+					args.Add("requestid", searchSettings.RequestId);
+
+				// ReSharper restore StringLiteralTypo
 			}
 
 			using (FormUrlEncodedContent content = new FormUrlEncodedContent(args))
@@ -114,7 +128,7 @@ namespace CreepysinStudios.WikiDotNet
 		{
 			//We need to replace any quotes before they get processed by the HTML decoder, or they don't get escaped and deal havoc with the Json
 			string unquoted = source.Replace("&quot;", "\\\"");
-			//Decode html entity codes like `&quot;` into their unicode counterparts (e.g. `&quot;` => `"`)
+			//Decode html entity codes like `&lt;` into their unicode counterparts (e.g. `&lt;` => `<`)
 			string decoded = WebUtility.HtmlDecode(unquoted);
 			//Remove html formatting tags like <span>, <div> etc.
 			return Regex.Replace(decoded, "<.*?>", string.Empty);
