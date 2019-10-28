@@ -24,8 +24,14 @@ namespace CreepysinStudios.WikiDotNet
 		/// </summary>
 		[JsonProperty("requestid")] public readonly string RequestId;
 
+		/// <summary>
+		///     The Wikipedia server that this request was served by
+		/// </summary>
 		[JsonProperty("servedby")] public readonly string ServedBy;
 
+		/// <summary>
+		///     The time at which the Wikipedia server received the search request
+		/// </summary>
 		[JsonProperty("curtimestamp")] public readonly DateTime Timestamp;
 	}
 }
