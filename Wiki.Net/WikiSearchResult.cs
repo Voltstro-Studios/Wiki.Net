@@ -13,7 +13,11 @@ namespace CreepysinStudios.WikiDotNet
 	//TODO: Add what categories the article falls into
 	public sealed class WikiSearchResult
 	{
+		/// <summary>
+		/// Unknown what this number refers to, likely refers to 'namespace' 
+		/// </summary>
 		[JsonProperty("ns")] public readonly int Ns;
+		
 		/// <summary>
 		///     The last time this page was edited
 		/// </summary>
