@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Collections.Generic;
 
 #endregion
 
@@ -12,6 +13,11 @@ namespace CreepysinStudios.WikiDotNet
 	/// </summary>
 	public sealed class WikiSearchSettings
 	{
+		/// <summary>
+		///     What namespaces to search in. Default is {0} (default)
+		/// </summary>
+		public List<int> Namespaces = null;
+
 		//TODO: Add search location enum (Title,Text,NearMatch etc)
 		/// <summary>
 		///     [Backing Field] How many results to return
@@ -45,5 +51,13 @@ namespace CreepysinStudios.WikiDotNet
 		///     A string that will be returned with the request results. Useful to distinguish multiple requests
 		/// </summary>
 		public string RequestId { get; set; }
+
+		/// <summary>
+		///     Should we only find results that exactly match our search
+		///     Example:
+		///     'Microsoft' results in 'Microsoft'
+		///     'Microsof' results in 'no results'
+		/// </summary>
+		public bool ExactMatch { get; set; } = false;
 	}
 }
