@@ -2,13 +2,20 @@
 
 namespace CreepysinStudios.WikiDotNet
 {
+	/// <summary>
+	///     Contains an array of <see cref="WikiSearchResult" />s and a <see cref="SearchInfo" />
+	/// </summary>
 	public sealed class WikiSearchQuery
 	{
+		/// <summary>
+		///     A read-only field that contains information such as the total amount of hits the search returned
+		/// </summary>
+		// ReSharper disable once StringLiteralTypo
+		[JsonProperty("searchinfo")] public readonly SearchInfo SearchInfo;
+
 		/// <summary>
 		///     An array of results returned from the wikipedia servers
 		/// </summary>
 		[JsonProperty("search")] public readonly WikiSearchResult[] SearchResults;
-
-		[JsonProperty("searchinfo")] public readonly SearchInfo SearchInfo;
 	}
 }
