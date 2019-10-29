@@ -3,32 +3,28 @@
 namespace CreepysinStudios.WikiDotNet
 {
 	/// <summary>
-	///     A class that represents a Wikipedia API error
+	///     A class that represents a Wikipedia API warning. Often returned when invalid parameters/arguments are passed to the
+	///     Wikipedia API
 	/// </summary>
 	// ReSharper disable once ClassCannotBeInstantiated
-	public sealed class Error
+	public sealed class Warning
 	{
 		/// <summary>
-		///     What error code does this this error correspond to
+		///     What warning code does this this warning correspond to
 		/// </summary>
 		[JsonProperty("code")] public readonly string Code;
 
 		/// <summary>
-		///     Any extra information the assist with debugging
-		/// </summary>
-		[JsonProperty("data")] public readonly string Data;
-
-		/// <summary>
-		///     What Wikipedia module gave this error
+		///     What Wikipedia module gave this warning
 		/// </summary>
 		[JsonProperty("module")] public readonly string Module;
 
 		/// <summary>
-		///     Information about this error
+		///     Information about this warning
 		/// </summary>
 		[JsonProperty("*")] public readonly string Text;
 
-		private Error()
+		private Warning()
 		{
 		}
 	}
