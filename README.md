@@ -1,19 +1,19 @@
 # Wiki.Net
 
 [![License](https://img.shields.io/github/license/Creepysin-Studios/Wiki.Net)](/LICENSE) [![Requirements Status](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements.svg?branch=Stable)](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements/?branch=Stable) [![NuGet](https://img.shields.io/nuget/v/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/) 
-[![Nuget](https://img.shields.io/nuget/dt/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/) [![Discord](https://img.shields.io/badge/Discord-Creepysin-7289da.svg?logo=discord)](https://discord.creepysin.com)
 
 Wiki.Net – An unofficial C# Wikipedia API
 
 ## Features
 
-Searches Wikipedia (duh!) and returns:
+Searches Wikipedia (duh!) and returns (per result):
+* Title
 * Page ID
-* Titles
 * Word Count
 * Size (bytes?)
 * Text Preview
 * URL of page
+* Time of last edit
 
 ## Getting Started
 
@@ -29,16 +29,18 @@ You can also download the binaries from the [releases](https://github.com/Creepy
 
 ### Example
 
-```csharp
+```c#
 string searchString = “Computer”;
+WikiSearchSettings searchSettings = new WikiSearchSettings
+	{RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2};
 
-WikiSearchResponse response = WikiSearcher.Search(searchString);
+WikiSearchResponse response = WikiSearcher.Search(searchString, searchSettings);
 
 Console.WriteLine($"\nResults found ({searchString}):\n");
-for (int i = 0; i < response.SearchResults.Length; i++)
+foreach (WikiSearchResult result in response.Query.SearchResults)
 {
-	WikiSearchResult result = response.SearchResults[i];
-	Console.WriteLine($"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url}\n\tLast edited at {result.LastEdited}\n");
+	Console.WriteLine(
+		$"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url}\n\tLast edited at {result.LastEdited}\n");
 }
 
 Console.ReadLine();
@@ -46,20 +48,26 @@ Console.ReadLine();
 
 **Output**
 ```
-Computer (12154 words)
-A computer is a machine that can be instructed to carry out sequences of arithmetic or logical operations automatically via computer programming. Modern...
-https://en.wikipedia.org/?curid=7878457
+Results found (Computer):
 
-Computer science (7267 words)
-Computer science (sometimes called computation science or computing science, but not to be confused with computational science or software engineering)...
-https://en.wikipedia.org/?curid=5323
+    Information technology (2836 words, 27146 bytes, id 36674345):  Information technology (IT) is the use of computers to store, retrieve, transmit, and manipulate data, or information, often in the context of a business...
+    At https://en.wikipedia.org/?curid=36674345
+    Last edited at 24/10/2019 11:53:39 AM
 
-*More results*
+    Computer graphics (computer science) (1632 words, 18720 bytes, id 18567168):    Computer graphics is a sub-field of Computer Science which studies methods for digitally synthesizing and manipulating visual content. Although the term...
+    At https://en.wikipedia.org/?curid=18567168
+    Last edited at 17/09/2019 12:21:21 AM
+
+    Computer hardware (2479 words, 22776 bytes, id 21808348):       Computer hardware includes the physical, tangible parts or components of a computer, such as the cabinet, central processing unit, monitor, keyboard,...
+    At https://en.wikipedia.org/?curid=21808348
+    Last edited at 16/10/2019 4:00:29 PM
+
+    *More results*
 ```
 
 ## Authors
 
-**EternalClickbait** - *Initial work* - [EternalClickbait]( https://github.com/EternalClickbait)
+**EternalClickbait** - *Initial work* - [EternalClickbait](https://github.com/EternalClickbait)
 
 ## License
 
