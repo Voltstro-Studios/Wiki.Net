@@ -14,6 +14,9 @@ namespace CreepysinStudios.WikiDotNet
 	// ReSharper disable once ClassCannotBeInstantiated
 	public sealed class WikiSearchResponse
 	{
+		/// <summary>
+		///     Any errors returned with the request, or <see langword="null" /> if there weren't any
+		/// </summary>
 		[JsonProperty("errors")] public readonly Error[] Errors;
 
 		/// <summary>
@@ -39,19 +42,31 @@ namespace CreepysinStudios.WikiDotNet
 		// ReSharper disable once StringLiteralTypo
 		[JsonProperty("curtimestamp")] public readonly DateTime Timestamp;
 
+		/// <summary>
+		///     Any warnings returned with the request, or <see langword="null" /> if there weren't any
+		/// </summary>
 		[JsonProperty("warnings")] public readonly Warning[] Warnings;
 
+		private WikiSearchResponse()
+		{
+		}
+
+		/// <summary>
+		///     Was this request successful, or were there errors?
+		/// </summary>
 		public bool WasSuccessful
 		{
 			get
 			{
-				if (Errors == null || Warnings == null) return false;
-				return Errors.Length == 0 && Warnings.Length == 0;
-			}
-		}
+				//If our errors and warnings arrays are null, we know this request was successful
+				if (Errors == null && Warnings == null) return true;
 
-		private WikiSearchResponse()
-		{
+				//If our arrays aren't null and their length is not zero, return false
+				if (Warnings != null && Warnings.Length != 0) return false;
+				if (Errors != null && Errors.Length != 0) return false;
+
+				return true;
+			}
 		}
 	}
 }
