@@ -13,5 +13,9 @@ namespace CreepysinStudios.WikiDotNet
 		/// </summary>
 		// ReSharper disable once StringLiteralTypo
 		[JsonProperty("totalhits")] public int TotalHits;
+
+		private SearchInfo()
+		{
+		}
 	}
 }

@@ -5,6 +5,7 @@ namespace CreepysinStudios.WikiDotNet
 	/// <summary>
 	///     Contains an array of <see cref="WikiSearchResult" />s and a <see cref="SearchInfo" />
 	/// </summary>
+	// ReSharper disable once ClassCannotBeInstantiated
 	public sealed class WikiSearchQuery
 	{
 		/// <summary>
@@ -17,5 +18,9 @@ namespace CreepysinStudios.WikiDotNet
 		///     An array of results returned from the wikipedia servers
 		/// </summary>
 		[JsonProperty("search")] public readonly WikiSearchResult[] SearchResults;
+
+		private WikiSearchQuery()
+		{
+		}
 	}
 }
