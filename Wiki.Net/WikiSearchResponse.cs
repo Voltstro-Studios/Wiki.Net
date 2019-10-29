@@ -14,6 +14,8 @@ namespace CreepysinStudios.WikiDotNet
 	// ReSharper disable once ClassCannotBeInstantiated
 	public sealed class WikiSearchResponse
 	{
+		[JsonProperty("errors")] public readonly Error[] Errors;
+
 		/// <summary>
 		///     The Query that the search returned
 		/// </summary>
@@ -36,6 +38,17 @@ namespace CreepysinStudios.WikiDotNet
 		/// </summary>
 		// ReSharper disable once StringLiteralTypo
 		[JsonProperty("curtimestamp")] public readonly DateTime Timestamp;
+
+		[JsonProperty("warnings")] public readonly Warning[] Warnings;
+
+		public bool WasSuccessful
+		{
+			get
+			{
+				if (Errors == null || Warnings == null) return false;
+				return Errors.Length == 0 && Warnings.Length == 0;
+			}
+		}
 
 		private WikiSearchResponse()
 		{
