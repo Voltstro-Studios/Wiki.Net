@@ -6,7 +6,6 @@ using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 #endregion
 
@@ -17,12 +16,6 @@ namespace CreepysinStudios.WikiDotNet
 	/// </summary>
 	public static class WikiSearcher
 	{
-		/// <summary>
-		///     The path we use to get results from
-		/// </summary>
-		private const string WikiGetPath = "https://en.wikipedia.org/w/api.php";
-
-		//Our HttpClient and handler that we use to request our information
 		/// <summary>
 		///     The <see cref="HttpClientHandler" /> that we use to request our information
 		/// </summary>
@@ -39,6 +32,11 @@ namespace CreepysinStudios.WikiDotNet
 		private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings();
 
 		/// <summary>
+		///     The path we use to get results from
+		/// </summary>
+		private static string WikiGetPath => $"{(UseHttps ? "https://" : "http://")}en.wikipedia.org/w/api.php";
+
+		/// <summary>
 		///     An optional proxy to route HTTP requests through when searching
 		/// </summary>
 		public static IWebProxy Proxy
@@ -49,33 +47,66 @@ namespace CreepysinStudios.WikiDotNet
 		}
 
 		/// <summary>
+		///     If we should use HTTPS for web requests or HTTP
+		/// </summary>
+		// ReSharper disable once MemberCanBePrivate.Global
+		// ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
+		public static bool UseHttps { get; set; } = true;
+
+		/// <summary>
 		///     Searches Wikipedia using the given <paramref name="searchString" />
 		/// </summary>
 		/// <param name="searchString">The string to search for</param>
+		/// <param name="searchSettings">An optional set of settings to </param>
+		/// <exception cref="ArgumentOutOfRangeException"></exception>
 		/// <returns>A list of search results obtained from the Wikipedia API</returns>
-		public static WikiSearchResponse Search(string searchString)
+		public static WikiSearchResponse Search(string searchString, WikiSearchSettings searchSettings = null)
 		{
 			if (string.IsNullOrWhiteSpace(searchString))
 				throw new ArgumentNullException(nameof(searchString), "A search string must be provided");
 
 			//Encode our values to be passed to the server
 			string url;
-			using (FormUrlEncodedContent content = new FormUrlEncodedContent(new[]
+			Dictionary<string, string> args = new Dictionary<string, string>
 			{
 				// ReSharper disable StringLiteralTypo
 
-				//Get results in Json
-				new KeyValuePair<string, string>("format", "json"),
 				//Query the Wiki API
-				new KeyValuePair<string, string>("action", "query"),
-				//Give errors in plain text
-				new KeyValuePair<string, string>("errorformat", "plaintext"),
+				["action"] = "query",
+				["list"] = "search",
 				//Our search params
-				new KeyValuePair<string, string>("list", "search"),
-				new KeyValuePair<string, string>("srsearch", searchString)
+				["srsearch"] = searchString,
+				//Get results in Json
+				["format"] = "json",
+				//Give errors in plain text
+				["errorformat"] = "plaintext"
 
 				// ReSharper restore StringLiteralTypo
-			}))
+			};
+
+			if (searchSettings != null)
+			{
+				// ReSharper disable StringLiteralTypo
+
+				//Limit our results, and offset if required
+				args.Add("srlimit", searchSettings.ResultLimit.ToString());
+				args.Add("sroffset", searchSettings.ResultOffset.ToString());
+				//If the namespaces list is null use "*" which means all of them
+				args.Add("srnamespace",
+					searchSettings.Namespaces == null ? "*" : string.Join('|', searchSettings.Namespaces));
+				//If we should search for the exact string
+				args.Add("srwhat", searchSettings.ExactMatch ? "nearmatch" : "text");
+				//Get which server we were served by
+				args.Add("servedby", "true");
+				//Request the current timestamp be included
+				args.Add("curtimestamp", "true");
+				if (searchSettings.RequestId != null)
+					args.Add("requestid", searchSettings.RequestId);
+
+				// ReSharper restore StringLiteralTypo
+			}
+
+			using (FormUrlEncodedContent content = new FormUrlEncodedContent(args))
 			{
 				url = $"{WikiGetPath}?{content.ReadAsStringAsync().Result}";
 			}
@@ -85,10 +116,8 @@ namespace CreepysinStudios.WikiDotNet
 			string jsonResult = responseMessage.Content.ReadAsStringAsync().Result;
 			jsonResult = StripTags(jsonResult);
 
-			WikiSearchResponse searchResponse = new WikiSearchResponse(jsonResult, responseMessage,
-				//We don't want to keep all of the extra information from our search, so we do some json magic to get the inner property
-				JsonConvert.DeserializeObject<JObject>(jsonResult, JsonSerializerSettings).GetValue("query")
-					.ToObject<JObject>().GetValue("search").ToObject<WikiSearchResult[]>());
+			WikiSearchResponse searchResponse =
+				JsonConvert.DeserializeObject<WikiSearchResponse>(jsonResult, JsonSerializerSettings);
 
 			return searchResponse;
 		}
@@ -102,7 +131,7 @@ namespace CreepysinStudios.WikiDotNet
 		{
 			//We need to replace any quotes before they get processed by the HTML decoder, or they don't get escaped and deal havoc with the Json
 			string unquoted = source.Replace("&quot;", "\\\"");
-			//Decode html entity codes like `&quot;` into their unicode counterparts (e.g. `&quot;` => `"`)
+			//Decode html entity codes like `&lt;` into their unicode counterparts (e.g. `&lt;` => `<`)
 			string decoded = WebUtility.HtmlDecode(unquoted);
 			//Remove html formatting tags like <span>, <div> etc.
 			return Regex.Replace(decoded, "<.*?>", string.Empty);

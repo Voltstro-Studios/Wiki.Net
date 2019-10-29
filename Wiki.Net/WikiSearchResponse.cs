@@ -1,44 +1,72 @@
 ﻿#region
 
 using System;
-using System.Net.Http;
+using Newtonsoft.Json;
 
 #endregion
 
 namespace CreepysinStudios.WikiDotNet
 {
 	/// <summary>
-	///     A class that contains an array of <see cref="WikiSearchResult" />, returned from the Wikipedia servers
+	///     An object returned by the Wikipedia API that contains a <see cref="WikiSearchQuery" /> and <see cref="RequestId" />
 	/// </summary>
+	//TODO: Add Error and warning class in case
+	// ReSharper disable once ClassCannotBeInstantiated
 	public sealed class WikiSearchResponse
 	{
 		/// <summary>
-		///     The Json string from which the results were taken
+		///     Any errors returned with the request, or <see langword="null" /> if there weren't any
 		/// </summary>
-		public readonly string JsonResult;
+		[JsonProperty("errors")] public readonly Error[] Errors;
 
 		/// <summary>
-		///     The response message from which the <see cref="SearchResults" /> and <see cref="JsonResult" /> are parsed
+		///     The Query that the search returned
 		/// </summary>
-		public readonly HttpResponseMessage ResponseMessage;
+		[JsonProperty("query")] public readonly WikiSearchQuery Query;
 
 		/// <summary>
-		///     An array of results returned from the wikipedia servers
+		///     The Request ID that was passed during the request
 		/// </summary>
-		public readonly WikiSearchResult[] SearchResults;
+		// ReSharper disable once StringLiteralTypo
+		[JsonProperty("requestid")] public readonly string RequestId;
 
 		/// <summary>
-		///     A constructor that creates a new <see cref="WikiSearchResponse" />
+		///     The Wikipedia server that this request was served by
 		/// </summary>
-		/// <param name="jsonResult">The Json string used to parse the search results</param>
-		/// <param name="responseMessage">The <see cref="HttpResponseMessage" /> that was returned from the server</param>
-		/// <param name="searchResults">An array of parsed search results</param>
-		internal WikiSearchResponse(string jsonResult,
-			HttpResponseMessage responseMessage, WikiSearchResult[] searchResults)
+		// ReSharper disable once StringLiteralTypo
+		[JsonProperty("servedby")] public readonly string ServedBy;
+
+		/// <summary>
+		///     The time at which the Wikipedia server received the search request
+		/// </summary>
+		// ReSharper disable once StringLiteralTypo
+		[JsonProperty("curtimestamp")] public readonly DateTime Timestamp;
+
+		/// <summary>
+		///     Any warnings returned with the request, or <see langword="null" /> if there weren't any
+		/// </summary>
+		[JsonProperty("warnings")] public readonly Warning[] Warnings;
+
+		private WikiSearchResponse()
 		{
-			JsonResult = jsonResult ?? throw new ArgumentNullException(nameof(jsonResult));
-			SearchResults = searchResults ?? throw new ArgumentNullException(nameof(searchResults));
-			ResponseMessage = responseMessage ?? throw new ArgumentNullException(nameof(responseMessage));
+		}
+
+		/// <summary>
+		///     Was this request successful, or were there errors?
+		/// </summary>
+		public bool WasSuccessful
+		{
+			get
+			{
+				//If our errors and warnings arrays are null, we know this request was successful
+				if (Errors == null && Warnings == null) return true;
+
+				//If our arrays aren't null and their length is not zero, return false
+				if (Warnings != null && Warnings.Length != 0) return false;
+				if (Errors != null && Errors.Length != 0) return false;
+
+				return true;
+			}
 		}
 	}
 }

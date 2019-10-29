@@ -10,14 +10,18 @@ namespace CreepysinStudios.WikiDotNet
 	/// <summary>
 	///     A single search result from a Wikipedia search
 	/// </summary>
-
-	//TODO: Add what categories the article falls into
+	// ReSharper disable once ClassCannotBeInstantiated
 	public sealed class WikiSearchResult
 	{
 		/// <summary>
 		///     The last time this page was edited
 		/// </summary>
 		[JsonProperty("timestamp")] public readonly DateTime LastEdited;
+
+		/// <summary>
+		///     Unknown what this number refers to, likely refers to 'namespace'
+		/// </summary>
+		[JsonProperty("ns")] public readonly int Ns;
 
 		/// <summary>
 		///     The numerical ID that corresponds internally (in Wikipedia's servers) to this page
@@ -47,9 +51,20 @@ namespace CreepysinStudios.WikiDotNet
 		// ReSharper disable once StringLiteralTypo
 		[JsonProperty("wordcount")] public readonly int WordCount;
 
+		private WikiSearchResult()
+		{
+		}
+
 		/// <summary>
-		///     The URL that can be used to access the article online. Created using the Page ID
+		///     A URL that can be used to access the article online. Created using the Page ID, and will point to the same article
+		///     even if the title changes
 		/// </summary>
-		public string Url => $"https://en.wikipedia.org/?curid={PageId}";
+		public string ConstantUrl => $"https://en.wikipedia.org/?curid={PageId}";
+
+		/// <summary>
+		///     A URL that can be used to access the article. If the page gets renamed or moved, this will likely break, and point
+		///     to a different or non-existent page
+		/// </summary>
+		public string Url => $"https://en.wikipedia.org/wiki/{Title}";
 	}
 }
