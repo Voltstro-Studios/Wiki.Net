@@ -10,7 +10,6 @@ namespace CreepysinStudios.WikiDotNet
 	/// <summary>
 	///     A single search result from a Wikipedia search
 	/// </summary>
-	//TODO: Add what categories the article falls into
 	// ReSharper disable once ClassCannotBeInstantiated
 	public sealed class WikiSearchResult
 	{
