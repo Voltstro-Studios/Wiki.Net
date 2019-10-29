@@ -7,11 +7,11 @@ using Newtonsoft.Json;
 
 namespace CreepysinStudios.WikiDotNet
 {
-	//TODO: Make all constructors private
 	/// <summary>
 	///     An object returned by the Wikipedia API that contains a <see cref="WikiSearchQuery" /> and <see cref="RequestId" />
 	/// </summary>
 	//TODO: Add Error and warning class in case
+	// ReSharper disable once ClassCannotBeInstantiated
 	public sealed class WikiSearchResponse
 	{
 		/// <summary>
@@ -36,5 +36,9 @@ namespace CreepysinStudios.WikiDotNet
 		/// </summary>
 		// ReSharper disable once StringLiteralTypo
 		[JsonProperty("curtimestamp")] public readonly DateTime Timestamp;
+
+		private WikiSearchResponse()
+		{
+		}
 	}
 }

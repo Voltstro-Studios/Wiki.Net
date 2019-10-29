@@ -11,6 +11,7 @@ namespace CreepysinStudios.WikiDotNet
 	///     A single search result from a Wikipedia search
 	/// </summary>
 	//TODO: Add what categories the article falls into
+	// ReSharper disable once ClassCannotBeInstantiated
 	public sealed class WikiSearchResult
 	{
 		/// <summary>
@@ -50,6 +51,10 @@ namespace CreepysinStudios.WikiDotNet
 		/// </summary>
 		// ReSharper disable once StringLiteralTypo
 		[JsonProperty("wordcount")] public readonly int WordCount;
+
+		private WikiSearchResult()
+		{
+		}
 
 		/// <summary>
 		///     A URL that can be used to access the article online. Created using the Page ID, and will point to the same article
