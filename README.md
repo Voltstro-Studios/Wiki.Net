@@ -26,7 +26,7 @@ Searches Wikipedia (duh!) and returns (per result):
 You can install via NuGet using the package manager command:
 
 ```
-Install-Package Wiki.Net -Version 2.0.0
+Install-Package Wiki.Net -Version 2.0.1
 ```
 
 You can also download the binaries from the [releases](https://github.com/Creepysin-Studios/Wiki.Net/releases).
