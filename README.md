@@ -1,6 +1,11 @@
 # Wiki.Net
 
 [![License](https://img.shields.io/github/license/Creepysin-Studios/Wiki.Net)](/LICENSE) [![Requirements Status](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements.svg?branch=Stable)](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements/?branch=Stable) [![NuGet](https://img.shields.io/nuget/v/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/) [![Discord](https://img.shields.io/badge/Discord-Creepysin-7289da.svg?logo=discord)](https://discord.creepysin.com)
+[![License](https://img.shields.io/github/license/Creepysin-Studios/Wiki.Net)](/LICENSE)
+[![Requirements Status](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements.svg?branch=Stable)](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements/?branch=Stable)
+[![Azure Build](https://img.shields.io/azure-devops/build/Creepysin-Studios/c4df32aa-4dfd-4b92-bf94-fe6c31c47b03/2/Stable)](https://dev.azure.com/Creepysin-Studios/Wiki.Net)
+[![NuGet](https://img.shields.io/nuget/v/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/)
+[![Discord](https://img.shields.io/badge/Discord-Creepysin-7289da.svg?logo=discord)](https://discord.creepysin.com)
 
 Wiki.Net – An unofficial C# Wikipedia API
 
@@ -22,7 +27,7 @@ Searches Wikipedia (duh!) and returns (per result):
 You can install via NuGet using the package manager command:
 
 ```
-Install-Package Wiki.Net -Version 1.0.0
+Install-Package Wiki.Net -Version 2.0.0
 ```
 
 You can also download the binaries from the [releases](https://github.com/Creepysin-Studios/Wiki.Net/releases).
@@ -68,6 +73,7 @@ Results found (Computer):
 ## Authors
 
 **EternalClickbait** - *Initial work* - [EternalClickbait](https://github.com/EternalClickbait)
+**Creepysin** - *Initial Docs Writer* - [Creepysin](https://github.com/Creepysin)
 
 ## License
 
