@@ -1,10 +1,10 @@
 # Wiki.Net
 
-[![License](https://img.shields.io/github/license/Creepysin-Studios/Wiki.Net)](/LICENSE) [![Requirements Status](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements.svg?branch=Stable)](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements/?branch=Stable) [![NuGet](https://img.shields.io/nuget/v/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/) [![Discord](https://img.shields.io/badge/Discord-Creepysin-7289da.svg?logo=discord)](https://discord.creepysin.com)
-[![License](https://img.shields.io/github/license/Creepysin-Studios/Wiki.Net)](/LICENSE)
-[![Requirements Status](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements.svg?branch=Stable)](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements/?branch=Stable)
+[![License](https://img.shields.io/github/license/Creepysin-Studios/Wiki.Net)](/LICENSE) 
+[![Requirements Status](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements.svg?branch=Development)](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements/?branch=Stable) 
+[![NuGet](https://img.shields.io/nuget/v/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/) 
+[![Discord](https://img.shields.io/badge/Discord-Creepysin-7289da.svg?logo=discord)](https://discord.creepysin.com)
 [![Azure Build](https://img.shields.io/azure-devops/build/Creepysin-Studios/c4df32aa-4dfd-4b92-bf94-fe6c31c47b03/2/Stable)](https://dev.azure.com/Creepysin-Studios/Wiki.Net)
-[![NuGet](https://img.shields.io/nuget/v/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/)
 [![Discord](https://img.shields.io/badge/Discord-Creepysin-7289da.svg?logo=discord)](https://discord.creepysin.com)
 
 Wiki.Net – An unofficial C# Wikipedia API
@@ -73,8 +73,9 @@ Results found (Computer):
 ## Authors
 
 **EternalClickbait** - *Initial work* - [EternalClickbait](https://github.com/EternalClickbait)
+
 **Creepysin** - *Initial Docs Writer* - [Creepysin](https://github.com/Creepysin)
 
 ## License
 
-This project is licensed under the Mozilla Public License 2.0 – see the [LICENSE](/LICENSE) file for details.
+This project is licensed under the MIT license – see the [LICENSE.md](/LICENSE.md) file for details.
