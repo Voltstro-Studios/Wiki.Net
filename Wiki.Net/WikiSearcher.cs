@@ -1,43 +1,39 @@
-﻿#region
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
-#endregion
-
 namespace CreepysinStudios.WikiDotNet
 {
 	/// <summary>
-	///     Provides functionality for searching Wikipedia for string, and returns an array of results
+	/// Provides functionality for searching Wikipedia for string, and returns an array of results
 	/// </summary>
 	public static class WikiSearcher
 	{
 		/// <summary>
-		///     The <see cref="HttpClientHandler" /> that we use to request our information
+		/// The <see cref="HttpClientHandler" /> that we use to request our information
 		/// </summary>
 		private static readonly HttpClientHandler Handler = new HttpClientHandler();
 
 		/// <summary>
-		///     The <see cref="HttpClient" /> that we use to request our information
+		/// The <see cref="HttpClient" /> that we use to request our information
 		/// </summary>
 		private static readonly HttpClient Client = new HttpClient(Handler);
 
 		/// <summary>
-		///     The <see cref="JsonSerializerSettings" /> that are used during deserialization
+		/// The <see cref="JsonSerializerSettings" /> that are used during deserialization
 		/// </summary>
 		private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings();
 
 		/// <summary>
-		///     The path we use to get results from
+		/// The path we use to get results from
 		/// </summary>
 		private static string WikiGetPath => $"{(UseHttps ? "https://" : "http://")}en.wikipedia.org/w/api.php";
 
 		/// <summary>
-		///     An optional proxy to route HTTP requests through when searching
+		/// An optional proxy to route HTTP requests through when searching
 		/// </summary>
 		public static IWebProxy Proxy
 		{
@@ -47,14 +43,14 @@ namespace CreepysinStudios.WikiDotNet
 		}
 
 		/// <summary>
-		///     If we should use HTTPS for web requests or HTTP
+		/// If we should use HTTPS for web requests or HTTP
 		/// </summary>
 		// ReSharper disable once MemberCanBePrivate.Global
 		// ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
 		public static bool UseHttps { get; set; } = true;
 
 		/// <summary>
-		///     Searches Wikipedia using the given <paramref name="searchString" />
+		/// Searches Wikipedia using the given <paramref name="searchString" />
 		/// </summary>
 		/// <param name="searchString">The string to search for</param>
 		/// <param name="searchSettings">An optional set of settings to </param>
@@ -123,7 +119,7 @@ namespace CreepysinStudios.WikiDotNet
 		}
 
 		/// <summary>
-		///     Removes any HTML formatting tags and unescaped HTML entity codes and
+		/// Removes any HTML formatting tags and unescaped HTML entity codes and
 		/// </summary>
 		/// <param name="source">The source string to format</param>
 		/// <returns>A Json-parser friendly string with any html tags removed</returns>
