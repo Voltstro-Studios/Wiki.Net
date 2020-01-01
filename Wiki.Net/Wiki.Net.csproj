@@ -5,12 +5,17 @@
         <RootNamespace>CreepysinStudios.WikiDotNet</RootNamespace>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>Wiki.Net</Title>
-        <Authors>Creepysin; EternalClickbait</Authors>
+        <Authors>Creepysin; EternalClickbait; HelloHowIsItGoing</Authors>
         <RepositoryUrl>https://github.com/Creepysin-Studios/Wiki.Net</RepositoryUrl>
-        <PackageTags>wiki, wikipedia, API</PackageTags>
-        <PackageLicenseUrl>https://github.com/Creepysin-Studios/Wiki.Net/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageTags>wiki, wikipedia, wikipedia-api, API, unofficial, dotnet,</PackageTags>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <PackageVersion>2.0.1</PackageVersion>
+        <Description>Wiki.Net - Wiki.Net – An unofficial C# Wikipedia API</Description>
+        <Version>2.1.0</Version>
+        <Company>Creepysin-Studios</Company>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+        <Copyright>Copyright © Creepysin-Studios 2020</Copyright>
+        <PackageProjectUrl>https://wikinet.studios.creepysin.com/</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -26,14 +31,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Include="..\.gitignore">
-        <Link>.gitignore</Link>
-      </None>
-      <None Include="..\azure-pipelines.yml">
-        <Link>azure-pipelines.yml</Link>
-      </None>
-      <None Include="..\LICENSE">
-        <Link>LICENSE</Link>
+      <None Include="..\LICENSE.md">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
       </None>
       <None Include="..\README.md">
         <Link>README.md</Link>
