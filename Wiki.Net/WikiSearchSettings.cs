@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CreepysinStudios.WikiDotNet
 {
 	/// <summary>
-	/// A struct containing settings for use when searching with <see cref="WikiSearcher" />.
+	/// A class containing settings for use when searching with <see cref="WikiSearcher" />.
 	/// <see cref="WikiSearcher.Search" />
 	/// </summary>
 	public sealed class WikiSearchSettings
