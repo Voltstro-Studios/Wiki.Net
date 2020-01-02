@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>CreepysinStudios.WikiDotNet</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Title>Wiki.Net</Title>
     <Authors>Creepysin; EternalClickbait; HelloHowIsItGoing</Authors>
     <RepositoryUrl>https://github.com/Creepysin-Studios/Wiki.Net</RepositoryUrl>
-    <PackageTags>wiki, wikipedia, wikipedia-api, API, unofficial, dotnet,</PackageTags>
+    <PackageTags>wiki, wikipedia, wikipedia-api, API, unofficial, dotnet</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageVersion>2.0.1</PackageVersion>
+    <PackageVersion>2.1.0</PackageVersion>
     <Description>Wiki.Net - Wiki.Net – An unofficial C# Wikipedia API</Description>
     <Version>2.1.0</Version>
     <Company>Creepysin-Studios</Company>
