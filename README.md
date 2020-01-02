@@ -35,7 +35,7 @@ You can also download the binaries from the [releases](https://github.com/Creepy
 ### Example
 
 ```c#
-string searchString = “Computer”;
+string searchString = "Computer";
 WikiSearchSettings searchSettings = new WikiSearchSettings
 	{RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2};
 
