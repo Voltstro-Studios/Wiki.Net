@@ -1,6 +1,6 @@
 # Wiki.Net
 
-[![License](https://img.shields.io/github/license/Creepysin-Studios/Wiki.Net)](/LICENSE) 
+[![License](https://img.shields.io/github/license/Creepysin-Studios/Wiki.Net)](/LICENSE.md) 
 [![Requirements Status](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements.svg?branch=Development)](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements/?branch=Stable) 
 [![NuGet](https://img.shields.io/nuget/v/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/)
 [![NuGet Download Count](https://img.shields.io/nuget/dt/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/)
