@@ -4,8 +4,8 @@
 [![Requirements Status](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements.svg?branch=Development)](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements/?branch=Stable) 
 [![NuGet](https://img.shields.io/nuget/v/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/)
 [![NuGet Download Count](https://img.shields.io/nuget/dt/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/)
-[![Azure Build](https://img.shields.io/azure-devops/build/Creepysin-Studios/c4df32aa-4dfd-4b92-bf94-fe6c31c47b03/2/Development)](https://dev.azure.com/Creepysin-Studios/Wiki.Net)
-[![Discord](https://img.shields.io/badge/Discord-Creepysin-7289da.svg?logo=discord)](https://discord.creepysin.com)
+[![Azure Build](https://img.shields.io/azure-devops/build/Creepysin-Studios/c4df32aa-4dfd-4b92-bf94-fe6c31c47b03/4/Development)](https://dev.azure.com/Creepysin-Studios/Wiki.Net)
+[![Discord](https://img.shields.io/badge/Discord-Voltstro-7289da.svg?logo=discord)](https://discord.voltstro.dev)
 
 Wiki.Net – An unofficial C# Wikipedia API
 
@@ -74,7 +74,7 @@ Results found (Computer):
 
 **EternalClickbait** - *Initial work* - [EternalClickbait](https://github.com/EternalClickbait)
 
-**Creepysin** - *Current Maintainer / Initial Docs Writer* - [Creepysin](https://github.com/Creepysin)
+**Voltstro** - *Current Maintainer / Initial Docs Writer* - [Voltstro](https://github.com/Voltstro)
 
 ## License
 
