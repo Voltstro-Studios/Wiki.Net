@@ -55,12 +55,18 @@ namespace CreepysinStudios.WikiDotNet
 		/// A URL that can be used to access the article online. Created using the Page ID, and will point to the same article
 		/// even if the title changes
 		/// </summary>
-		public string ConstantUrl => $"https://en.wikipedia.org/?curid={PageId}";
+		public string ConstantUrl(string language)
+        {
+            return $"https://{language}.wikipedia.org/?curid={PageId}";
+        }
 
-		/// <summary>
+        /// <summary>
 		/// A URL that can be used to access the article. If the page gets renamed or moved, this will likely break, and point
 		/// to a different or non-existent page
 		/// </summary>
-		public string Url => $"https://en.wikipedia.org/wiki/{Title}";
-	}
+		public string Url(string language)
+        {
+            return $"https://{language}.wikipedia.org/wiki/{Title}";
+        }
+    }
 }

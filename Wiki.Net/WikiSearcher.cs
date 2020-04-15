@@ -30,7 +30,7 @@ namespace CreepysinStudios.WikiDotNet
 		/// <summary>
 		/// The path we use to get results from
 		/// </summary>
-		private static string WikiGetPath => $"{(UseHttps ? "https://" : "http://")}en.wikipedia.org/w/api.php";
+		private static string WikiGetPath => $"{(UseHttps ? "https://" : "http://")}%LANG%.wikipedia.org/w/api.php";
 
 		/// <summary>
 		/// An optional proxy to route HTTP requests through when searching
@@ -62,7 +62,8 @@ namespace CreepysinStudios.WikiDotNet
 				throw new ArgumentNullException(nameof(searchString), "A search string must be provided");
 
 			//Encode our values to be passed to the server
-			string url;
+            string url;
+            string apiLanguage = "en";
 			Dictionary<string, string> args = new Dictionary<string, string>
 			{
 				// ReSharper disable StringLiteralTypo
@@ -98,13 +99,14 @@ namespace CreepysinStudios.WikiDotNet
 				args.Add("curtimestamp", "true");
 				if (searchSettings.RequestId != null)
 					args.Add("requestid", searchSettings.RequestId);
+                apiLanguage = searchSettings.Language;
 
-				// ReSharper restore StringLiteralTypo
-			}
+                // ReSharper restore StringLiteralTypo
+            }
 
 			using (FormUrlEncodedContent content = new FormUrlEncodedContent(args))
 			{
-				url = $"{WikiGetPath}?{content.ReadAsStringAsync().Result}";
+				url = $"{WikiGetPath.Replace("%LANG%", apiLanguage)}?{content.ReadAsStringAsync().Result}";
 			}
 
 			//Get a response from the server
