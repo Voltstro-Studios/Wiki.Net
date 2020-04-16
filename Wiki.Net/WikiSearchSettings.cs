@@ -48,6 +48,11 @@ namespace CreepysinStudios.WikiDotNet
 		/// </summary>
 		public string RequestId { get; set; }
 
+		/// <summary>
+		/// The language of the wiki to search in. Default is 'en' (default)
+		/// </summary>
+		public string Language { get; set; }
+
 		// ReSharper disable once CommentTypo
 		/// <summary>
 		/// Should we only find results that exactly match our search

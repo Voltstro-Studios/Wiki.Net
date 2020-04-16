@@ -11,7 +11,7 @@ Wiki.Net – An unofficial C# Wikipedia API
 
 ## Features
 
-Searches Wikipedia (duh!) and returns (per result):
+Searches Wikipedia (duh!) in multiple defined languages and returns (per result):
 * Title
 * Page ID
 * Word Count
@@ -37,7 +37,7 @@ You can also download the binaries from the [releases](https://github.com/Creepy
 ```c#
 string searchString = "Computer";
 WikiSearchSettings searchSettings = new WikiSearchSettings
-	{RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2};
+	{RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2, Language= "en"};
 
 WikiSearchResponse response = WikiSearcher.Search(searchString, searchSettings);
 
@@ -45,7 +45,7 @@ Console.WriteLine($"\nResults found ({searchString}):\n");
 foreach (WikiSearchResult result in response.Query.SearchResults)
 {
 	Console.WriteLine(
-		$"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url}\n\tLast edited at {result.LastEdited}\n");
+		$"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url(searchSettings.Language)}\n\tLast edited at {result.LastEdited}\n");
 }
 
 Console.ReadLine();

@@ -37,7 +37,7 @@ namespace CreepysinStudios.WikiDotNet.Example
 			#region Loop until the user exits
 
 			WikiSearchSettings searchSettings = new WikiSearchSettings
-				{RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2};
+				{RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2, Language = "en"};
 			Request:
 			//Get a search from the user, or exit
 			string req = AskUserString("Enter a search query, 'exit' or 'quit' to quit");
@@ -67,7 +67,7 @@ namespace CreepysinStudios.WikiDotNet.Example
 			Console.WriteLine($"\nResults found ({searchString}):\n");
 			foreach (WikiSearchResult result in response.Query.SearchResults)
 				Console.WriteLine(
-					$"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url} and {result.ConstantUrl}\n\tLast edited at {result.LastEdited}\n");
+					$"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url(searchSettings.Language)} and {result.ConstantUrl(searchSettings.Language)}\n\tLast edited at {result.LastEdited}\n");
 		}
 
 		private static string AskUserString(string message, bool clearConsole = true)
