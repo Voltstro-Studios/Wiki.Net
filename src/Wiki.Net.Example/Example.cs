@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace CreepysinStudios.WikiDotNet.Example
+namespace WikiDotNet.Example
 {
 	internal static class Example
 	{

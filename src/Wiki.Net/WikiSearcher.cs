@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
-namespace CreepysinStudios.WikiDotNet
+namespace WikiDotNet
 {
 	/// <summary>
 	/// Provides functionality for searching Wikipedia for string, and returns an array of results

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CreepysinStudios.WikiDotNet
+namespace WikiDotNet
 {
 	/// <summary>
-	/// A class containing settings for use when searching with <see cref="WikiSearcher" />.
-	/// <see cref="WikiSearcher.Search" />
+	/// A class containing settings for use when searching with <see cref="WikiSearcher.Search" />.
+	/// <see cref="WikiSearcher" />
 	/// </summary>
 	public sealed class WikiSearchSettings
 	{

@@ -3,7 +3,7 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp2.2</TargetFramework>
-        <RootNamespace>CreepysinStudios.WikiDotNet.Example</RootNamespace>
+        <RootNamespace>WikiDotNet.Example</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

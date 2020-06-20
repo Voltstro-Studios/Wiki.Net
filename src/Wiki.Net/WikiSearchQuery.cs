@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CreepysinStudios.WikiDotNet
+namespace WikiDotNet
 {
 	/// <summary>
 	/// Contains an array of <see cref="WikiSearchResult" />s and a <see cref="SearchInfo" />
