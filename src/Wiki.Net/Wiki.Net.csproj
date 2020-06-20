@@ -11,7 +11,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageVersion>2.1.0</PackageVersion>
     <Description>Wiki.Net – An unofficial C# Wikipedia API</Description>
-    <Version>2.1.0</Version>
+    <Version>3.0.0</Version>
     <Company>Voltstro-Studios</Company>
     <PackageLicenseFile></PackageLicenseFile>
     <Copyright>Copyright © Voltstro-Studios 2020</Copyright>
