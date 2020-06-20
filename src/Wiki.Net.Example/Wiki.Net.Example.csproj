@@ -2,15 +2,11 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
         <RootNamespace>WikiDotNet.Example</RootNamespace>
     </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-    </ItemGroup>
-
-    <ItemGroup>
+  <ItemGroup>
       <ProjectReference Include="..\Wiki.Net\Wiki.Net.csproj" />
     </ItemGroup>
 
