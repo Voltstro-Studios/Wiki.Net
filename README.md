@@ -1,10 +1,9 @@
 # Wiki.Net
 
 [![License](https://img.shields.io/github/license/Creepysin-Studios/Wiki.Net)](/LICENSE.md) 
-[![Requirements Status](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements.svg?branch=Development)](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements/?branch=Stable) 
 [![NuGet](https://img.shields.io/nuget/v/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/)
 [![NuGet Download Count](https://img.shields.io/nuget/dt/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/)
-[![Azure Build](https://img.shields.io/azure-devops/build/Creepysin-Studios/c4df32aa-4dfd-4b92-bf94-fe6c31c47b03/4/Development)](https://dev.azure.com/Creepysin-Studios/Wiki.Net)
+[![Azure Build](https://dev.azure.com/Voltstro-Studios/Wiki.Net/_apis/build/status/Voltstro-Studios.Wiki.Net?branchName=Development)](https://dev.azure.com/Voltstro-Studios/Wiki.Net/_build?definitionId=4)
 [![Discord](https://img.shields.io/badge/Discord-Voltstro-7289da.svg?logo=discord)](https://discord.voltstro.dev)
 
 Wiki.Net – An unofficial C# Wikipedia API
