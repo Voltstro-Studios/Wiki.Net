@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CreepysinStudios.WikiDotNet
+namespace WikiDotNet
 {
 	/// <summary>
 	/// A class that contains information about a Wikipedia search. Currently only contains an int for the total number of

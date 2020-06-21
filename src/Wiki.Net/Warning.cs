@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace CreepysinStudios.WikiDotNet
+namespace WikiDotNet
 {
 	/// <summary>
 	/// A class that represents a Wikipedia API warning. Often returned when invalid parameters/arguments are passed to the

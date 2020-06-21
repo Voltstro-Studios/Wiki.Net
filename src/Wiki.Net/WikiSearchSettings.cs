@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CreepysinStudios.WikiDotNet
+namespace WikiDotNet
 {
 	/// <summary>
-	/// A class containing settings for use when searching with <see cref="WikiSearcher" />.
-	/// <see cref="WikiSearcher.Search" />
+	/// A class containing settings for use when searching with <see cref="WikiSearcher.Search" />.
+	/// <see cref="WikiSearcher" />
 	/// </summary>
 	public sealed class WikiSearchSettings
 	{
@@ -19,6 +19,11 @@ namespace CreepysinStudios.WikiDotNet
 		/// [Backing Field] How many results to return
 		/// </summary>
 		private int resultLimit = 10;
+
+		/// <summary>
+		/// [Backing Field] The language of the wiki to search in. Default is 'en' (default)
+		/// </summary>
+		private string language = "en";
 
 		/// <summary>
 		/// How many results to return
@@ -47,6 +52,22 @@ namespace CreepysinStudios.WikiDotNet
 		/// A string that will be returned with the request results. Useful to distinguish multiple requests
 		/// </summary>
 		public string RequestId { get; set; }
+
+		/// <summary>
+		/// The language of the wiki to search in. Default is 'en' (default)
+		/// </summary>
+		/// <exception cref="ArgumentException">Occurs when the given value is <see langword="null" /> or white space</exception>
+		public string Language
+		{
+			get => language;
+			set
+			{
+				if(string.IsNullOrWhiteSpace(value))
+					throw new ArgumentException("Value cannot be null or white space!", nameof(value));
+
+				language = Language;
+			}
+		}
 
 		// ReSharper disable once CommentTypo
 		/// <summary>

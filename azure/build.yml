@@ -1,0 +1,6 @@
+steps:
+- script: dotnet restore -v minimal src/Wiki.Net.sln
+  displayName: Restore Packages
+
+- script: dotnet build src/Wiki.Net.sln --no-restore -v minimal -c $(buildConfiguration)
+  displayName: Build Project

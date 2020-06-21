@@ -1,17 +1,18 @@
+<img align="right" src="icon.png">
+
 # Wiki.Net
 
 [![License](https://img.shields.io/github/license/Creepysin-Studios/Wiki.Net)](/LICENSE.md) 
-[![Requirements Status](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements.svg?branch=Development)](https://requires.io/github/Creepysin-Studios/Wiki.Net/requirements/?branch=Stable) 
 [![NuGet](https://img.shields.io/nuget/v/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/)
 [![NuGet Download Count](https://img.shields.io/nuget/dt/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/)
-[![Azure Build](https://img.shields.io/azure-devops/build/Creepysin-Studios/c4df32aa-4dfd-4b92-bf94-fe6c31c47b03/2/Development)](https://dev.azure.com/Creepysin-Studios/Wiki.Net)
-[![Discord](https://img.shields.io/badge/Discord-Creepysin-7289da.svg?logo=discord)](https://discord.creepysin.com)
+[![Azure Build](https://dev.azure.com/Voltstro-Studios/Wiki.Net/_apis/build/status/Voltstro-Studios.Wiki.Net?branchName=Development)](https://dev.azure.com/Voltstro-Studios/Wiki.Net/_build?definitionId=4)
+[![Discord](https://img.shields.io/badge/Discord-Voltstro-7289da.svg?logo=discord)](https://discord.voltstro.dev)
 
 Wiki.Net – An unofficial C# Wikipedia API
 
 ## Features
 
-Searches Wikipedia (duh!) and returns (per result):
+Searches Wikipedia (duh!) in multiple defined languages and returns (per result):
 * Title
 * Page ID
 * Word Count
@@ -27,17 +28,17 @@ Searches Wikipedia (duh!) and returns (per result):
 You can install via NuGet using the package manager command:
 
 ```
-Install-Package Wiki.Net -Version 2.0.1
+Install-Package Wiki.Net
 ```
 
-You can also download the binaries from the [releases](https://github.com/Creepysin-Studios/Wiki.Net/releases).
+You can also download the binaries from the [releases](https://github.com/Voltstro-Studios/Wiki.Net/releases).
 
 ### Example
 
 ```c#
 string searchString = "Computer";
 WikiSearchSettings searchSettings = new WikiSearchSettings
-	{RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2};
+	{RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2, Language = "en"};
 
 WikiSearchResponse response = WikiSearcher.Search(searchString, searchSettings);
 
@@ -45,7 +46,7 @@ Console.WriteLine($"\nResults found ({searchString}):\n");
 foreach (WikiSearchResult result in response.Query.SearchResults)
 {
 	Console.WriteLine(
-		$"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url}\n\tLast edited at {result.LastEdited}\n");
+		$"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url(searchSettings.Language)}\n\tLast edited at {result.LastEdited}\n");
 }
 
 Console.ReadLine();
@@ -70,11 +71,18 @@ Results found (Computer):
     *More results*
 ```
 
+
+### Upgrading from 2.x to 3.x
+
+In 3.0, we simplified the namespace of Wiki.Net to `WikiDotNet`.
+
+To upgrade from 2.x version of Wiki.Net to 3.x, you need to change all of the `using CreepysinStudios.WikiDotNet` to `using WikiDotNet` in your projects. The easiest way would just be to do a replace all in your entire solution.
+
 ## Authors
 
 **EternalClickbait** - *Initial work* - [EternalClickbait](https://github.com/EternalClickbait)
 
-**Creepysin** - *Current Maintainer / Initial Docs Writer* - [Creepysin](https://github.com/Creepysin)
+**Voltstro** - *Current Maintainer / Initial Docs Writer* - [Voltstro](https://github.com/Voltstro)
 
 ## License
 
