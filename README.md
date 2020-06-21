@@ -1,3 +1,5 @@
+<img align="right" src="icon.png">
+
 # Wiki.Net
 
 [![License](https://img.shields.io/github/license/Creepysin-Studios/Wiki.Net)](/LICENSE.md) 
