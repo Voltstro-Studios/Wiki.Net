@@ -56,6 +56,7 @@ namespace WikiDotNet
 		/// <summary>
 		/// The language of the wiki to search in. Default is 'en' (default)
 		/// </summary>
+		/// <exception cref="ArgumentException">Occurs when the given value is <see langword="null" /> or white space</exception>
 		public string Language
 		{
 			get => language;
