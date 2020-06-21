@@ -7,7 +7,7 @@
     <Title>Wiki.Net</Title>
     <Authors>Voltstro; EternalClickbait; HelloHowIsItGoing</Authors>
     <RepositoryUrl>https://github.com/Voltstro-Studios/Wiki.Net</RepositoryUrl>
-    <PackageTags>wiki, wikipedia, wikipedia-api, API, unofficial, dotnet</PackageTags>
+    <PackageTags>wiki, wikipedia, wikipedia-api, API, unofficial, dotnet, dotnetstandard, csharp</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageVersion>3.0.0</PackageVersion>
     <Description>Wiki.Net – An unofficial C# Wikipedia API</Description>
@@ -19,6 +19,10 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>Github</RepositoryType>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageReleaseNotes>Release notes for 3.0.0:
+* BREAKING: Changed namespace from `CreepysinStudios.WikiDotNet` to `WikiDotNet`
+* Updated package details
+* Added possibility to define wiki language (PR by JayJay1989)</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
