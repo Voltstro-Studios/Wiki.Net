@@ -21,6 +21,11 @@ namespace WikiDotNet
 		private int resultLimit = 10;
 
 		/// <summary>
+		/// [Backing Field] The language of the wiki to search in. Default is 'en' (default)
+		/// </summary>
+		private string language = "en";
+
+		/// <summary>
 		/// How many results to return
 		/// </summary>
 		/// <exception cref="ArgumentOutOfRangeException">Occurs when the given value is too high or low</exception>
@@ -51,7 +56,17 @@ namespace WikiDotNet
 		/// <summary>
 		/// The language of the wiki to search in. Default is 'en' (default)
 		/// </summary>
-		public string Language { get; set; }
+		public string Language
+		{
+			get => language;
+			set
+			{
+				if(string.IsNullOrWhiteSpace(value))
+					throw new ArgumentException("Value cannot be null or white space!", nameof(value));
+
+				language = Language;
+			}
+		}
 
 		// ReSharper disable once CommentTypo
 		/// <summary>
