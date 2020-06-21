@@ -28,7 +28,7 @@ Searches Wikipedia (duh!) in multiple defined languages and returns (per result)
 You can install via NuGet using the package manager command:
 
 ```
-Install-Package Wiki.Net -Version 2.1.0
+Install-Package Wiki.Net
 ```
 
 You can also download the binaries from the [releases](https://github.com/Voltstro-Studios/Wiki.Net/releases).
