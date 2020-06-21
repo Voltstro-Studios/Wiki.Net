@@ -29,14 +29,14 @@ You can install via NuGet using the package manager command:
 Install-Package Wiki.Net -Version 2.1.0
 ```
 
-You can also download the binaries from the [releases](https://github.com/Creepysin-Studios/Wiki.Net/releases).
+You can also download the binaries from the [releases](https://github.com/Voltstro-Studios/Wiki.Net/releases).
 
 ### Example
 
 ```c#
 string searchString = "Computer";
 WikiSearchSettings searchSettings = new WikiSearchSettings
-	{RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2, Language= "en"};
+	{RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2, Language = "en"};
 
 WikiSearchResponse response = WikiSearcher.Search(searchString, searchSettings);
 
@@ -68,6 +68,13 @@ Results found (Computer):
 
     *More results*
 ```
+
+
+### Upgrading from 2.x to 3.x
+
+In 3.0, we simplified the namespace of Wiki.Net to `WikiDotNet`.
+
+To upgrade from 2.x version of Wiki.Net to 3.x, you need to change all of the `using CreepysinStudios.WikiDotNet` to `using WikiDotNet` in your projects. The easiest way would just be to do a replace all in your entire solution.
 
 ## Authors
 
