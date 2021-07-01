@@ -9,7 +9,7 @@
         <Company>Voltstro-Studios</Company>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Description>An example for Wiki.Net</Description>
-        <Copyright>Copyright © Voltstro-Studios 2020</Copyright>
+        <Copyright>Copyright © Voltstro-Studios 2019-2021</Copyright>
     </PropertyGroup>
 
   <ItemGroup>
