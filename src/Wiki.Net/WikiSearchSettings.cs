@@ -65,7 +65,7 @@ namespace WikiDotNet
 				if(string.IsNullOrWhiteSpace(value))
 					throw new ArgumentException("Value cannot be null or white space!", nameof(value));
 
-				language = Language;
+				language = value;
 			}
 		}
 
