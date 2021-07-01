@@ -33,7 +33,7 @@ You can also download the binaries from the [releases](https://github.com/Voltst
 
 ### Example
 
-```c#
+```csharp
 string searchString = "Computer";
 WikiSearchSettings searchSettings = new WikiSearchSettings
 	{RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2, Language = "en"};
