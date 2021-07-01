@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
     <RootNamespace>WikiDotNet</RootNamespace>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Title>Wiki.Net</Title>
     <Authors>Voltstro;EternalClickbait;</Authors>
     <RepositoryUrl>https://github.com/Voltstro-Studios/Wiki.Net</RepositoryUrl>
@@ -30,6 +29,7 @@
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <DocumentationFile>bin\Release\Wiki.Net.xml</DocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,6 +39,7 @@
   <ItemGroup>
     <None Include="..\..\icon.png">
       <Pack>True</Pack>
+      <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 
