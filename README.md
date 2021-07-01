@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/github/license/Creepysin-Studios/Wiki.Net)](/LICENSE.md) 
 [![NuGet](https://img.shields.io/nuget/v/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/)
 [![NuGet Download Count](https://img.shields.io/nuget/dt/Wiki.Net)](https://www.nuget.org/packages/Wiki.Net/)
-[![Azure Build](https://dev.azure.com/Voltstro-Studios/Wiki.Net/_apis/build/status/Voltstro-Studios.Wiki.Net?branchName=Development)](https://dev.azure.com/Voltstro-Studios/Wiki.Net/_build?definitionId=4)
+[![Build Status](https://dev.azure.com/Voltstro-Studios/Wiki.Net/_apis/build/status/Voltstro-Studios.Wiki.Net?branchName=master)](https://dev.azure.com/Voltstro-Studios/Wiki.Net/_build/latest?definitionId=4&branchName=master)
 [![Discord](https://img.shields.io/badge/Discord-Voltstro-7289da.svg?logo=discord)](https://discord.voltstro.dev)
 
 Wiki.Net – An unofficial C# Wikipedia API
@@ -35,7 +35,7 @@ You can also download the binaries from the [releases](https://github.com/Voltst
 
 ### Example
 
-```c#
+```csharp
 string searchString = "Computer";
 WikiSearchSettings searchSettings = new WikiSearchSettings
 	{RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2, Language = "en"};
