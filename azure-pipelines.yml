@@ -1,6 +1,7 @@
 trigger:
-- Stable
-- Development
+- master
+pr:
+- master
 
 variables:
   buildConfiguration: 'Release'
@@ -8,18 +9,18 @@ variables:
 jobs:
 - job: Windows
   pool:
-    vmImage: 'windows-2019'
+    vmImage: 'windows-latest'
   steps:
   - template: azure/build.yml
 
 - job: Linux
   pool:
-    vmImage: 'ubuntu-18.04'
+    vmImage: 'ubuntu-latest'
   steps:
   - template: azure/build.yml
 
 - job: MacOS
   pool:
-    vmImage: 'macOS-10.15'
+    vmImage: 'macOS-latest'
   steps:
   - template: azure/build.yml
