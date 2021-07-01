@@ -7,15 +7,15 @@ namespace WikiDotNet
 	/// results.
 	/// </summary>
 	public class SearchInfo
-	{
-		/// <summary>
-		/// How many hits did the search return (in total, including those not shown)
-		/// </summary>
-		// ReSharper disable once StringLiteralTypo
-		[JsonProperty("totalhits")] public int TotalHits;
+    {
+	    /// <summary>
+	    /// How many hits did the search return (in total, including those not shown)
+	    /// </summary>
+	    // ReSharper disable once StringLiteralTypo
+        [JsonProperty("totalhits")] public int TotalHits;
 
-		private SearchInfo()
-		{
-		}
-	}
+        private SearchInfo()
+        {
+        }
+    }
 }
