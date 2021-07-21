@@ -7,56 +7,56 @@ using Newtonsoft.Json;
 
 namespace WikiDotNet
 {
-	/// <summary>
-	/// Provides functionality for searching Wikipedia for string, and returns an array of results
-	/// </summary>
-	public static class WikiSearcher
+    /// <summary>
+    /// Provides functionality for searching Wikipedia for string, and returns an array of results
+    /// </summary>
+    public static class WikiSearcher
     {
-	    /// <summary>
-	    /// The <see cref="HttpClientHandler" /> that we use to request our information
-	    /// </summary>
-	    private static readonly HttpClientHandler Handler = new HttpClientHandler();
+        /// <summary>
+        /// The <see cref="HttpClientHandler" /> that we use to request our information
+        /// </summary>
+        private static readonly HttpClientHandler Handler = new HttpClientHandler();
 
-	    /// <summary>
-	    /// The <see cref="HttpClient" /> that we use to request our information
-	    /// </summary>
-	    private static readonly HttpClient Client = new HttpClient(Handler);
+        /// <summary>
+        /// The <see cref="HttpClient" /> that we use to request our information
+        /// </summary>
+        private static readonly HttpClient Client = new HttpClient(Handler);
 
-	    /// <summary>
-	    /// The <see cref="JsonSerializerSettings" /> that are used during deserialization
-	    /// </summary>
-	    private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings();
+        /// <summary>
+        /// The <see cref="JsonSerializerSettings" /> that are used during deserialization
+        /// </summary>
+        private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings();
 
-	    /// <summary>
-	    /// The path we use to get results from
-	    /// </summary>
-	    private static string WikiGetPath => $"{(UseHttps ? "https://" : "http://")}%LANG%.wikipedia.org/w/api.php";
+        /// <summary>
+        /// The path we use to get results from
+        /// </summary>
+        private static string WikiGetPath => $"{(UseHttps ? "https://" : "http://")}%LANG%.wikipedia.org/w/api.php";
 
-	    /// <summary>
-	    /// An optional proxy to route HTTP requests through when searching
-	    /// </summary>
-	    public static IWebProxy Proxy
+        /// <summary>
+        /// An optional proxy to route HTTP requests through when searching
+        /// </summary>
+        public static IWebProxy Proxy
         {
             // ReSharper disable once UnusedMember.Global
             get => Handler.Proxy;
             set => Handler.Proxy = value;
         }
 
-	    /// <summary>
-	    /// If we should use HTTPS for web requests or HTTP
-	    /// </summary>
-	    // ReSharper disable once MemberCanBePrivate.Global
+        /// <summary>
+        /// If we should use HTTPS for web requests or HTTP
+        /// </summary>
+        // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
         public static bool UseHttps { get; set; } = true;
 
-	    /// <summary>
-	    /// Searches Wikipedia using the given <paramref name="searchString" />
-	    /// </summary>
-	    /// <param name="searchString">The string to search for</param>
-	    /// <param name="searchSettings">An optional set of settings to </param>
-	    /// <exception cref="ArgumentOutOfRangeException"></exception>
-	    /// <returns>A list of search results obtained from the Wikipedia API</returns>
-	    public static WikiSearchResponse Search(string searchString, WikiSearchSettings searchSettings = null)
+        /// <summary>
+        /// Searches Wikipedia using the given <paramref name="searchString" />
+        /// </summary>
+        /// <param name="searchString">The string to search for</param>
+        /// <param name="searchSettings">An optional set of settings to </param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <returns>A list of search results obtained from the Wikipedia API</returns>
+        public static WikiSearchResponse Search(string searchString, WikiSearchSettings searchSettings = null)
         {
             if (string.IsNullOrWhiteSpace(searchString))
                 throw new ArgumentNullException(nameof(searchString), "A search string must be provided");
@@ -120,12 +120,12 @@ namespace WikiDotNet
             return searchResponse;
         }
 
-	    /// <summary>
-	    /// Removes any HTML formatting tags and unescaped HTML entity codes and
-	    /// </summary>
-	    /// <param name="source">The source string to format</param>
-	    /// <returns>A Json-parser friendly string with any html tags removed</returns>
-	    private static string StripTags(string source)
+        /// <summary>
+        /// Removes any HTML formatting tags and unescaped HTML entity codes and
+        /// </summary>
+        /// <param name="source">The source string to format</param>
+        /// <returns>A Json-parser friendly string with any html tags removed</returns>
+        private static string StripTags(string source)
         {
             //We need to replace any quotes before they get processed by the HTML decoder, or they don't get escaped and deal havoc with the Json
             string unquoted = source.Replace("&quot;", "\\\"");

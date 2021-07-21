@@ -3,33 +3,33 @@ using System.Collections.Generic;
 
 namespace WikiDotNet
 {
-	/// <summary>
-	/// A class containing settings for use when searching with <see cref="WikiSearcher.Search" />.
-	/// <see cref="WikiSearcher" />
-	/// </summary>
-	public sealed class WikiSearchSettings
+    /// <summary>
+    /// A class containing settings for use when searching with <see cref="WikiSearcher.Search" />.
+    /// <see cref="WikiSearcher" />
+    /// </summary>
+    public sealed class WikiSearchSettings
     {
-	    /// <summary>
-	    /// [Backing Field] The language of the wiki to search in. Default is 'en' (default)
-	    /// </summary>
-	    private string language = "en";
+        /// <summary>
+        /// [Backing Field] The language of the wiki to search in. Default is 'en' (default)
+        /// </summary>
+        private string language = "en";
 
-	    /// <summary>
-	    /// What namespaces to search in. Default is {0} (default)
-	    /// </summary>
-	    // ReSharper disable once FieldCanBeMadeReadOnly.Global
+        /// <summary>
+        /// What namespaces to search in. Default is {0} (default)
+        /// </summary>
+        // ReSharper disable once FieldCanBeMadeReadOnly.Global
         public List<int> Namespaces = null;
 
-	    /// <summary>
-	    /// [Backing Field] How many results to return
-	    /// </summary>
-	    private int resultLimit = 10;
+        /// <summary>
+        /// [Backing Field] How many results to return
+        /// </summary>
+        private int resultLimit = 10;
 
-	    /// <summary>
-	    /// How many results to return
-	    /// </summary>
-	    /// <exception cref="ArgumentOutOfRangeException">Occurs when the given value is too high or low</exception>
-	    public int ResultLimit
+        /// <summary>
+        /// How many results to return
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">Occurs when the given value is too high or low</exception>
+        public int ResultLimit
         {
             get => resultLimit;
             set
@@ -43,21 +43,21 @@ namespace WikiDotNet
             }
         }
 
-	    /// <summary>
-	    /// An amount to offset the search results by. Useful when scrolling through large groups of pages
-	    /// </summary>
-	    public int ResultOffset { get; set; }
+        /// <summary>
+        /// An amount to offset the search results by. Useful when scrolling through large groups of pages
+        /// </summary>
+        public int ResultOffset { get; set; }
 
-	    /// <summary>
-	    /// A string that will be returned with the request results. Useful to distinguish multiple requests
-	    /// </summary>
-	    public string RequestId { get; set; }
+        /// <summary>
+        /// A string that will be returned with the request results. Useful to distinguish multiple requests
+        /// </summary>
+        public string RequestId { get; set; }
 
-	    /// <summary>
-	    /// The language of the wiki to search in. Default is 'en' (default)
-	    /// </summary>
-	    /// <exception cref="ArgumentException">Occurs when the given value is <see langword="null" /> or white space</exception>
-	    public string Language
+        /// <summary>
+        /// The language of the wiki to search in. Default is 'en' (default)
+        /// </summary>
+        /// <exception cref="ArgumentException">Occurs when the given value is <see langword="null" /> or white space</exception>
+        public string Language
         {
             get => language;
             set

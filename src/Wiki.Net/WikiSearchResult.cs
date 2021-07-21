@@ -3,32 +3,32 @@ using Newtonsoft.Json;
 
 namespace WikiDotNet
 {
-	/// <summary>
-	/// A single search result from a Wikipedia search
-	/// </summary>
-	// ReSharper disable once ClassCannotBeInstantiated
+    /// <summary>
+    /// A single search result from a Wikipedia search
+    /// </summary>
+    // ReSharper disable once ClassCannotBeInstantiated
     public sealed class WikiSearchResult
     {
-	    /// <summary>
-	    /// The last time this page was edited
-	    /// </summary>
-	    [JsonProperty("timestamp")] public readonly DateTime LastEdited;
+        /// <summary>
+        /// The last time this page was edited
+        /// </summary>
+        [JsonProperty("timestamp")] public readonly DateTime LastEdited;
 
-	    /// <summary>
-	    /// Unknown what this number refers to, likely refers to 'namespace'
-	    /// </summary>
-	    [JsonProperty("ns")] public readonly int Ns;
+        /// <summary>
+        /// Unknown what this number refers to, likely refers to 'namespace'
+        /// </summary>
+        [JsonProperty("ns")] public readonly int Ns;
 
-	    /// <summary>
-	    /// The numerical ID that corresponds internally (in Wikipedia's servers) to this page
-	    /// </summary>
-	    // ReSharper disable once StringLiteralTypo
+        /// <summary>
+        /// The numerical ID that corresponds internally (in Wikipedia's servers) to this page
+        /// </summary>
+        // ReSharper disable once StringLiteralTypo
         [JsonProperty("pageid")] public readonly int PageId;
 
-	    /// <summary>
-	    /// A preview of the page
-	    /// </summary>
-	    [JsonProperty("snippet")] public readonly string Preview;
+        /// <summary>
+        /// A preview of the page
+        /// </summary>
+        [JsonProperty("snippet")] public readonly string Preview;
 
         //TODO: Find out what 'size' is (Assumed bytes at the moment)
         /// <summary>
