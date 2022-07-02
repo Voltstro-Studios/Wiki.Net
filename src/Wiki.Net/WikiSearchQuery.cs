@@ -18,9 +18,17 @@ namespace WikiDotNet
         /// An array of results returned from the wikipedia servers
         /// </summary>
         [JsonProperty("search")] public readonly WikiSearchResult[] SearchResults = null!;
-
+        
         private WikiSearchQuery()
         {
+        }
+
+        internal void SetLanguage(string language)
+        {
+            foreach (WikiSearchResult searchResult in SearchResults)
+            {
+                searchResult.Language = language;
+            }
         }
     }
 }

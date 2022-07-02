@@ -47,6 +47,8 @@ namespace WikiDotNet
         // ReSharper disable once StringLiteralTypo
         [JsonProperty("wordcount")] public readonly int WordCount;
 
+        internal string Language { set; private get; } = null!;
+        
         private WikiSearchResult()
         {
         }
@@ -55,18 +57,12 @@ namespace WikiDotNet
         /// A URL that can be used to access the article online. Created using the Page ID, and will point to the same article
         /// even if the title changes
         /// </summary>
-        public string ConstantUrl(string language)
-        {
-            return $"https://{language}.wikipedia.org/?curid={PageId}";
-        }
+        public Uri ConstantUrl => new Uri($"https://{Language}.wikipedia.org/?curid={PageId}");
 
         /// <summary>
         /// A URL that can be used to access the article. If the page gets renamed or moved, this will likely break, and point
         /// to a different or non-existent page
         /// </summary>
-        public string Url(string language)
-        {
-            return $"https://{language}.wikipedia.org/wiki/{Title}";
-        }
+        public Uri Url => new Uri($"https://{Language}.wikipedia.org/wiki/{Title}");
     }
 }

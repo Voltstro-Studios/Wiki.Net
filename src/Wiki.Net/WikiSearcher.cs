@@ -100,6 +100,7 @@ namespace WikiDotNet
             if (searchResponse == null)
                 throw new JsonSerializationException("The outputted deserialized object was null!");
             
+            searchResponse.Query.SetLanguage(apiLanguage);
             return searchResponse;
         }
 
