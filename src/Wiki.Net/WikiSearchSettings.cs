@@ -18,7 +18,7 @@ namespace WikiDotNet
         /// What namespaces to search in. Default is {0} (default)
         /// </summary>
         // ReSharper disable once FieldCanBeMadeReadOnly.Global
-        public List<int> Namespaces = null;
+        public List<int>? Namespaces = null;
 
         /// <summary>
         /// [Backing Field] How many results to return
@@ -51,7 +51,7 @@ namespace WikiDotNet
         /// <summary>
         /// A string that will be returned with the request results. Useful to distinguish multiple requests
         /// </summary>
-        public string RequestId { get; set; }
+        public string? RequestId { get; set; }
 
         /// <summary>
         /// The language of the wiki to search in. Default is 'en' (default)

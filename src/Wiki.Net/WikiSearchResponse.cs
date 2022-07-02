@@ -13,35 +13,35 @@ namespace WikiDotNet
         /// <summary>
         /// Any errors returned with the request, or <see langword="null" /> if there weren't any
         /// </summary>
-        [JsonProperty("errors")] public readonly Error[] Errors;
+        [JsonProperty("errors")] public readonly Error[]? Errors;
+        
+        /// <summary>
+        /// Any warnings returned with the request, or <see langword="null" /> if there weren't any
+        /// </summary>
+        [JsonProperty("warnings")] public readonly Warning[]? Warnings;
 
         /// <summary>
         /// The Query that the search returned
         /// </summary>
-        [JsonProperty("query")] public readonly WikiSearchQuery Query;
+        [JsonProperty("query")] public readonly WikiSearchQuery Query = null!;
 
         /// <summary>
         /// The Request ID that was passed during the request
         /// </summary>
         // ReSharper disable once StringLiteralTypo
-        [JsonProperty("requestid")] public readonly string RequestId;
+        [JsonProperty("requestid")] public readonly string RequestId = null!;
 
         /// <summary>
         /// The Wikipedia server that this request was served by
         /// </summary>
         // ReSharper disable once StringLiteralTypo
-        [JsonProperty("servedby")] public readonly string ServedBy;
+        [JsonProperty("servedby")] public readonly string ServedBy = null!;
 
         /// <summary>
         /// The time at which the Wikipedia server received the search request
         /// </summary>
         // ReSharper disable once StringLiteralTypo
         [JsonProperty("curtimestamp")] public readonly DateTime Timestamp;
-
-        /// <summary>
-        /// Any warnings returned with the request, or <see langword="null" /> if there weren't any
-        /// </summary>
-        [JsonProperty("warnings")] public readonly Warning[] Warnings;
 
         private WikiSearchResponse()
         {
@@ -55,13 +55,10 @@ namespace WikiDotNet
             get
             {
                 //If our errors and warnings arrays are null, we know this request was successful
-                if (Errors == null && Warnings == null) return true;
+                if (Errors == null && Warnings == null)
+                    return true;
 
-                //If our arrays aren't null and their length is not zero, return false
-                if (Warnings != null && Warnings.Length != 0) return false;
-                if (Errors != null && Errors.Length != 0) return false;
-
-                return true;
+                return false;
             }
         }
     }

@@ -10,44 +10,26 @@ namespace WikiDotNet
     /// <summary>
     /// Provides functionality for searching Wikipedia for string, and returns an array of results
     /// </summary>
-    public static class WikiSearcher
+    public class WikiSearcher
     {
-        /// <summary>
-        /// The <see cref="HttpClientHandler" /> that we use to request our information
-        /// </summary>
-        private static readonly HttpClientHandler Handler = new HttpClientHandler();
-
         /// <summary>
         /// The <see cref="HttpClient" /> that we use to request our information
         /// </summary>
-        private static readonly HttpClient Client = new HttpClient(Handler);
-
-        /// <summary>
-        /// The <see cref="JsonSerializerSettings" /> that are used during deserialization
-        /// </summary>
-        private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings();
+        private readonly HttpClient client;
 
         /// <summary>
         /// The path we use to get results from
         /// </summary>
-        private static string WikiGetPath => $"{(UseHttps ? "https://" : "http://")}%LANG%.wikipedia.org/w/api.php";
+        private static string WikiGetPath => "https://{0}.wikipedia.org/w/api.php?{1}";
 
         /// <summary>
-        /// An optional proxy to route HTTP requests through when searching
+        ///     Creates a new <see cref="WikiSearcher"/> instance
         /// </summary>
-        public static IWebProxy Proxy
+        /// <param name="httpClient">Set if you have a global <see cref="HttpClient"/> to use</param>
+        public WikiSearcher(HttpClient? httpClient = default)
         {
-            // ReSharper disable once UnusedMember.Global
-            get => Handler.Proxy;
-            set => Handler.Proxy = value;
+            client = httpClient ?? new HttpClient();
         }
-
-        /// <summary>
-        /// If we should use HTTPS for web requests or HTTP
-        /// </summary>
-        // ReSharper disable once MemberCanBePrivate.Global
-        // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
-        public static bool UseHttps { get; set; } = true;
 
         /// <summary>
         /// Searches Wikipedia using the given <paramref name="searchString" />
@@ -56,7 +38,7 @@ namespace WikiDotNet
         /// <param name="searchSettings">An optional set of settings to </param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         /// <returns>A list of search results obtained from the Wikipedia API</returns>
-        public static WikiSearchResponse Search(string searchString, WikiSearchSettings searchSettings = null)
+        public WikiSearchResponse Search(string searchString, WikiSearchSettings? searchSettings = null)
         {
             if (string.IsNullOrWhiteSpace(searchString))
                 throw new ArgumentNullException(nameof(searchString), "A search string must be provided");
@@ -64,7 +46,7 @@ namespace WikiDotNet
             //Encode our values to be passed to the server
             string url;
             string apiLanguage = "en";
-            Dictionary<string, string> args = new Dictionary<string, string>
+            Dictionary<string, string> args = new()
             {
                 // ReSharper disable StringLiteralTypo
 
@@ -104,19 +86,20 @@ namespace WikiDotNet
                 // ReSharper restore StringLiteralTypo
             }
 
-            using (FormUrlEncodedContent content = new FormUrlEncodedContent(args))
+            using (FormUrlEncodedContent content = new(args))
             {
-                url = $"{WikiGetPath.Replace("%LANG%", apiLanguage)}?{content.ReadAsStringAsync().Result}";
+                url = string.Format(WikiGetPath, apiLanguage, content.ReadAsStringAsync().Result);
             }
 
             //Get a response from the server
-            HttpResponseMessage responseMessage = Client.GetAsync(url).Result;
+            HttpResponseMessage responseMessage = client.GetAsync(url).Result;
             string jsonResult = responseMessage.Content.ReadAsStringAsync().Result;
             jsonResult = StripTags(jsonResult);
 
-            WikiSearchResponse searchResponse =
-                JsonConvert.DeserializeObject<WikiSearchResponse>(jsonResult, JsonSerializerSettings);
-
+            WikiSearchResponse? searchResponse = JsonConvert.DeserializeObject<WikiSearchResponse>(jsonResult);
+            if (searchResponse == null)
+                throw new JsonSerializationException("The outputted deserialized object was null!");
+            
             return searchResponse;
         }
 

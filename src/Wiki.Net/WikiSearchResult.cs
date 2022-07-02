@@ -28,7 +28,7 @@ namespace WikiDotNet
         /// <summary>
         /// A preview of the page
         /// </summary>
-        [JsonProperty("snippet")] public readonly string Preview;
+        [JsonProperty("snippet")] public readonly string Preview = null!;
 
         //TODO: Find out what 'size' is (Assumed bytes at the moment)
         /// <summary>
@@ -39,7 +39,7 @@ namespace WikiDotNet
         /// <summary>
         /// The title of this page
         /// </summary>
-        [JsonProperty("title")] public readonly string Title;
+        [JsonProperty("title")] public readonly string Title = null!;
 
         /// <summary>
         /// How many words are in the article

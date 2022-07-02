@@ -22,6 +22,8 @@
       * Support .NET 5
       * Update Newtonsoft.Json to 13.0.1
     </PackageReleaseNotes>
+    <LangVersion>10</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">

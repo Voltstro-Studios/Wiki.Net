@@ -12,17 +12,17 @@ namespace WikiDotNet
         /// <summary>
         /// What warning code does this warning correspond to
         /// </summary>
-        [JsonProperty("code")] public readonly string Code;
+        [JsonProperty("code")] public readonly string Code = null!;
 
         /// <summary>
         /// What Wikipedia module gave this warning
         /// </summary>
-        [JsonProperty("module")] public readonly string Module;
+        [JsonProperty("module")] public readonly string Module = null!;
 
         /// <summary>
         /// Information about this warning
         /// </summary>
-        [JsonProperty("*")] public readonly string Text;
+        [JsonProperty("*")] public readonly string Text = null!;
 
         private Warning()
         {
