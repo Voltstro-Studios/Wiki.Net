@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
     <RootNamespace>WikiDotNet</RootNamespace>
     <Title>Wiki.Net</Title>
     <Authors>Voltstro;EternalClickbait</Authors>
@@ -12,7 +12,7 @@
     <Version>3.1.0</Version>
     <PackageVersion>3.1.0</PackageVersion>
     <Company>Voltstro-Studios</Company>
-    <Copyright>Copyright © Voltstro-Studios 2019-2021</Copyright>
+    <Copyright>Copyright (c) Voltstro-Studios 2019-2022</Copyright>
     <PackageProjectUrl>https://wikinet.voltstro.dev</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>Github</RepositoryType>
