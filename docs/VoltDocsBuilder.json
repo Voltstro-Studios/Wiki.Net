@@ -1,0 +1,13 @@
+{
+    "DocsType": "DocFx",
+    "PreActions": [
+        {
+            "Program": "dotnet",
+            "Arguments": "build src/Wiki.Net.sln -c Release"
+        },
+        {
+            "Program": "cp",
+            "Arguments": "CHANGELOG.md docs/"
+        }
+    ]
+} 
