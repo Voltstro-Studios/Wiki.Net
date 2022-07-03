@@ -36,9 +36,10 @@ public sealed class WikiSearchSettings
         {
             const int min = 1;
             const int max = 50;
-            if (value < min || value > max)
+            if (value is < min or > max)
                 throw new ArgumentOutOfRangeException(nameof(value),
                     $"Value {value} is out of range. Valid range is {min}-{max}");
+            
             resultLimit = value;
         }
     }
