@@ -40,7 +40,7 @@ internal static class Example
         Console.WriteLine($"\nResults found ({searchString}):\n");
         foreach (WikiSearchResult result in response.Query.SearchResults)
             Console.WriteLine(
-                $"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url} and {result.ConstantUrl}\n\tLast edited at {result.LastEdited}\n");
+                $"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url.AbsoluteUri} and {result.ConstantUrl.AbsoluteUri}\n\tLast edited at {result.LastEdited}\n");
     }
 
     private static string AskUserString(string message, bool clearConsole = true)
