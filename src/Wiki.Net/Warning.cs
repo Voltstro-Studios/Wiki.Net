@@ -1,31 +1,30 @@
 ﻿using Newtonsoft.Json;
 
-namespace WikiDotNet
+namespace WikiDotNet;
+
+/// <summary>
+/// A class that represents a Wikipedia API warning. Often returned when invalid parameters/arguments are passed to the
+/// Wikipedia API
+/// </summary>
+// ReSharper disable once ClassCannotBeInstantiated
+public sealed class Warning
 {
     /// <summary>
-    /// A class that represents a Wikipedia API warning. Often returned when invalid parameters/arguments are passed to the
-    /// Wikipedia API
+    /// What warning code does this warning correspond to
     /// </summary>
-    // ReSharper disable once ClassCannotBeInstantiated
-    public sealed class Warning
+    [JsonProperty("code")] public readonly string Code = null!;
+
+    /// <summary>
+    /// What Wikipedia module gave this warning
+    /// </summary>
+    [JsonProperty("module")] public readonly string Module = null!;
+
+    /// <summary>
+    /// Information about this warning
+    /// </summary>
+    [JsonProperty("*")] public readonly string Text = null!;
+
+    private Warning()
     {
-        /// <summary>
-        /// What warning code does this warning correspond to
-        /// </summary>
-        [JsonProperty("code")] public readonly string Code = null!;
-
-        /// <summary>
-        /// What Wikipedia module gave this warning
-        /// </summary>
-        [JsonProperty("module")] public readonly string Module = null!;
-
-        /// <summary>
-        /// Information about this warning
-        /// </summary>
-        [JsonProperty("*")] public readonly string Text = null!;
-
-        private Warning()
-        {
-        }
     }
 }

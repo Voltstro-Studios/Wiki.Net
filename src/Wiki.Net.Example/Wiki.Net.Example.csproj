@@ -12,8 +12,8 @@
         <Copyright>Copyright (c) Voltstro-Studios 2019-2022</Copyright>
     </PropertyGroup>
 
-  <ItemGroup>
-      <ProjectReference Include="..\Wiki.Net\Wiki.Net.csproj" />
+    <ItemGroup>
+        <ProjectReference Include="..\Wiki.Net\Wiki.Net.csproj"/>
     </ItemGroup>
 
 </Project>

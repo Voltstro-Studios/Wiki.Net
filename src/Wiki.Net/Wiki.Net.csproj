@@ -1,53 +1,53 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
-    <RootNamespace>WikiDotNet</RootNamespace>
-    <Title>Wiki.Net</Title>
-    <Authors>Voltstro;EternalClickbait</Authors>
-    <PackageTags>wiki, wikipedia, wikipedia-api, API, unofficial, dotnet, dotnetstandard, csharp</PackageTags>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Description>Wiki.Net – An unofficial C# Wikipedia API</Description>
-    <Version>3.1.0</Version>
-    <PackageVersion>3.1.0</PackageVersion>
-    <Company>Voltstro-Studios</Company>
-    <Copyright>Copyright (c) Voltstro-Studios 2019-2022</Copyright>
-    <PackageProjectUrl>https://wikinet.voltstro.dev</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIcon>icon.png</PackageIcon>
-    <PackageReleaseNotes>Release notes for 3.1.0:
-      * Fix Language property not being set correctly
-      * Support .NET 5
-      * Update Newtonsoft.Json to 13.0.1
-    </PackageReleaseNotes>
-    <LangVersion>10</LangVersion>
-    <Nullable>enable</Nullable>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <DocumentationFile>bin\$(Configuration)\Wiki.Net.xml</DocumentationFile>
-    <PackageOutputPath Condition="'$(PackageOutputPath)' == ''">../Packaging/bin/</PackageOutputPath>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
+        <RootNamespace>WikiDotNet</RootNamespace>
+        <Title>Wiki.Net</Title>
+        <Authors>Voltstro;EternalClickbait</Authors>
+        <PackageTags>wiki, wikipedia, wikipedia-api, API, unofficial, dotnet, dotnetstandard, csharp</PackageTags>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <Description>Wiki.Net – An unofficial C# Wikipedia API</Description>
+        <Version>3.1.0</Version>
+        <PackageVersion>3.1.0</PackageVersion>
+        <Company>Voltstro-Studios</Company>
+        <Copyright>Copyright (c) Voltstro-Studios 2019-2022</Copyright>
+        <PackageProjectUrl>https://wikinet.voltstro.dev</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageReleaseNotes>Release notes for 3.1.0:
+            * Fix Language property not being set correctly
+            * Support .NET 5
+            * Update Newtonsoft.Json to 13.0.1
+        </PackageReleaseNotes>
+        <LangVersion>10</LangVersion>
+        <Nullable>enable</Nullable>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <DocumentationFile>bin\$(Configuration)\Wiki.Net.xml</DocumentationFile>
+        <PackageOutputPath Condition="'$(PackageOutputPath)' == ''">../Packaging/bin/</PackageOutputPath>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\icon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\icon.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
 
 </Project>
