@@ -5,7 +5,6 @@
     <RootNamespace>WikiDotNet</RootNamespace>
     <Title>Wiki.Net</Title>
     <Authors>Voltstro;EternalClickbait</Authors>
-    <RepositoryUrl>https://github.com/Voltstro-Studios/Wiki.Net</RepositoryUrl>
     <PackageTags>wiki, wikipedia, wikipedia-api, API, unofficial, dotnet, dotnetstandard, csharp</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>Wiki.Net – An unofficial C# Wikipedia API</Description>
@@ -15,7 +14,6 @@
     <Copyright>Copyright (c) Voltstro-Studios 2019-2022</Copyright>
     <PackageProjectUrl>https://wikinet.voltstro.dev</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryType>Github</RepositoryType>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReleaseNotes>Release notes for 3.1.0:
       * Fix Language property not being set correctly
@@ -24,19 +22,25 @@
     </PackageReleaseNotes>
     <LangVersion>10</LangVersion>
     <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
-    <DocumentationFile>bin\Debug\Wiki.Net.xml</DocumentationFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <DocumentationFile>bin\$(Configuration)\Wiki.Net.xml</DocumentationFile>
+    <PackageOutputPath Condition="'$(PackageOutputPath)' == ''">../Packaging/bin/</PackageOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
-    <DocumentationFile>bin\Release\Wiki.Net.xml</DocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
   </ItemGroup>
 
   <ItemGroup>
