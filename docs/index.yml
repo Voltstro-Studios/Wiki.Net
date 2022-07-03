@@ -1,0 +1,8 @@
+#YamlMime:Home
+hero:
+  title: Wiki.Net
+  description: |
+    An unofficial C# Wikipedia API
+  actions:
+  - name: Get Started
+    href: articles/index.md

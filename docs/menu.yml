@@ -1,0 +1,7 @@
+#YamlMime:Menu
+items:
+- name: Articles
+  href: articles/index.md
+
+- name: API Documentation
+  href: api/WikiDotNet.yml
