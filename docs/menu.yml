@@ -5,3 +5,6 @@ items:
 
 - name: API Documentation
   href: api/WikiDotNet.yml
+
+- name: Changelog
+  href: CHANGELOG.md
