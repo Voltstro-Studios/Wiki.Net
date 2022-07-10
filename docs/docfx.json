@@ -1,6 +1,8 @@
 {
   "template": "https://gitlab.com/Voltstro-Studios/doctools/volt-docfxv3-theme-package",
   "defaultLocale": "en-au",
+  "hostName": "projects.voltstro.dev",
+  "basePath": "WikiNet",
   "globalMetadata": {
     "_appTitle": "Wiki.Net",
     "_appFooter": "Copyright (c) 2019-2022 Voltstro-Studios<br>Site built with DocFX V3",
