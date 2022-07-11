@@ -1,8 +1,6 @@
-<img align="right" src="icon.png">
-
 # Wiki.Net
 
-[![License](https://img.shields.io/github/license/Voltstro-Studios/Wiki.Net?label=License)](/LICENSE.md)
+[![License](https://img.shields.io/github/license/Voltstro-Studios/Wiki.Net?label=License)](https://github.com/Voltstro-Studios/Wiki.Net/blob/master/LICENSE.md)
 [![NuGet](https://img.shields.io/nuget/v/Wiki.Net?label=NuGet)](https://www.nuget.org/packages/Wiki.Net/)
 [![NuGet Download Count](https://img.shields.io/nuget/dt/Wiki.Net?label=Downloads&logo=nuget&color=blue&logoColor=blue)](https://www.nuget.org/packages/Wiki.Net/)
 [![Build Status)](https://img.shields.io/azure-devops/build/Voltstro-Studios/c4df32aa-4dfd-4b92-bf94-fe6c31c47b03/4/master?label=Build&logo=azure-pipelines)](https://dev.azure.com/Voltstro-Studios/Wiki.Net/_build/latest?definitionId=4&branchName=master)
@@ -97,4 +95,4 @@ To upgrade from 2.x version of Wiki.Net to 3.x, you need to change all of the `u
 
 ## License
 
-This project is licensed under the MIT license – see the [LICENSE.md](/LICENSE.md) file for details.
+This project is licensed under the MIT license – see the [LICENSE.md](https://github.com/Voltstro-Studios/Wiki.Net/blob/Development/LICENSE.md) file for details.

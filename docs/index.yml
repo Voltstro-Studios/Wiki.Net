@@ -2,7 +2,7 @@
 hero:
   title: Wiki.Net
   description: |
-    An unofficial C# Wikipedia API
+    Wiki.Net – An unofficial .NET Wikipedia API wrapper
   actions:
   - name: Get Started
     href: articles/index.md

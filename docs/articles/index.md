@@ -6,7 +6,7 @@
 [![Build Status)](https://img.shields.io/azure-devops/build/Voltstro-Studios/c4df32aa-4dfd-4b92-bf94-fe6c31c47b03/4/master?label=Build&logo=azure-pipelines)](https://dev.azure.com/Voltstro-Studios/Wiki.Net/_build/latest?definitionId=4&branchName=master)
 [![Discord](https://img.shields.io/badge/Discord-Voltstro-7289da.svg?logo=discord)](https://discord.voltstro.dev)
 
-Wiki.Net – An unofficial C# Wikipedia API
+Wiki.Net – An unofficial .NET Wikipedia API wrapper.
 
 ## Features
 

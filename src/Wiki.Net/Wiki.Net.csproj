@@ -3,27 +3,33 @@
     <PropertyGroup>
         <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
         <RootNamespace>WikiDotNet</RootNamespace>
-        <Title>Wiki.Net</Title>
-        <Authors>Voltstro;Ararem</Authors>
-        <PackageTags>wiki, wikipedia, wikipedia-api, API, unofficial, dotnet, dotnetstandard, csharp</PackageTags>
-        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <Description>Wiki.Net – An unofficial C# Wikipedia API</Description>
-        <Version>4.0.0</Version>
-        <PackageVersion>4.0.0</PackageVersion>
-        <Company>Voltstro-Studios</Company>
-        <Copyright>Copyright (c) Voltstro-Studios 2019-2022</Copyright>
-        <PackageProjectUrl>https://projects.voltstro.dev/WikiNet/</PackageProjectUrl>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageIcon>icon.png</PackageIcon>
-        <PackageReleaseNotes>See https://projects.voltstro.dev/WikiNet/changelog/ for changelog.</PackageReleaseNotes>
         <LangVersion>10</LangVersion>
         <Nullable>enable</Nullable>
+        <Title>Wiki.Net</Title>
+        <Authors>Voltstro;Ararem</Authors>
+       
+        <Version>4.0.0</Version>
+        <PackageVersion>4.0.0</PackageVersion>
+        
+        <Company>Voltstro-Studios</Company>
+        <Copyright>Copyright (c) Voltstro-Studios 2019-2022</Copyright>
+
+        <DocumentationFile>bin\$(Configuration)\Wiki.Net.xml</DocumentationFile>
+        
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <DocumentationFile>bin\$(Configuration)\Wiki.Net.xml</DocumentationFile>
+        
+        <Description>Wiki.Net – An unofficial .NET Wikipedia API wrapper</Description>
+        <PackageTags>wiki, wikipedia, wikipedia-api, API, unofficial, dotnet, dotnetstandard, csharp</PackageTags>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageProjectUrl>https://projects.voltstro.dev/WikiNet/</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageReleaseNotes>See https://projects.voltstro.dev/WikiNet/changelog/ for changelog.</PackageReleaseNotes>
         <PackageOutputPath Condition="'$(PackageOutputPath)' == ''">../Packaging/bin/</PackageOutputPath>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -43,6 +49,10 @@
         <None Include="..\..\icon.png">
             <Pack>True</Pack>
             <PackagePath></PackagePath>
+        </None>
+        <None Include="../Packaging/README.package.md">
+            <Pack>True</Pack>
+            <PackagePath>README.md</PackagePath>
         </None>
     </ItemGroup>
 
