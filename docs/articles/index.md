@@ -23,28 +23,28 @@ Searches Wikipedia (duh!) in multiple defined languages and returns (per result)
 
 ### Installation
 
-You can install via NuGet using the package manager command:
+You can install via NuGet by adding Wiki.Net to your project's packages:
 
+```xml
+<ItemGroup>
+    <PackageReference Include="Wiki.Net" Version="4.0.0"/>
+</ItemGroup>
 ```
-Install-Package Wiki.Net
-```
-
-You can also download the binaries from the [releases](https://github.com/Voltstro-Studios/Wiki.Net/releases).
 
 ### Example
 
 ```csharp
 string searchString = "Computer";
-WikiSearchSettings searchSettings = new WikiSearchSettings
-	{RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2, Language = "en"};
+WikiSearcher searcher = new();
+WikiSearchSettings searchSettings = new() {RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2, Language = "en"};
 
-WikiSearchResponse response = WikiSearcher.Search(searchString, searchSettings);
+WikiSearchResponse response = searcher.Search(searchString, searchSettings);
 
 Console.WriteLine($"\nResults found ({searchString}):\n");
 foreach (WikiSearchResult result in response.Query.SearchResults)
 {
 	Console.WriteLine(
-		$"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url(searchSettings.Language)}\n\tLast edited at {result.LastEdited}\n");
+                $"\t{result.Title} ({result.WordCount} words, {result.Size} bytes, id {result.PageId}):\t{result.Preview}...\n\tAt {result.Url.AbsoluteUri} and {result.ConstantUrl.AbsoluteUri}\n\tLast edited at {result.LastEdited}\n");
 }
 
 Console.ReadLine();
@@ -54,22 +54,34 @@ Console.ReadLine();
 ```
 Results found (Computer):
 
-    Information technology (2836 words, 27146 bytes, id 36674345):  Information technology (IT) is the use of computers to store, retrieve, transmit, and manipulate data, or information, often in the context of a business...
-    At https://en.wikipedia.org/?curid=36674345
-    Last edited at 24/10/2019 11:53:39 AM
+        Computer engineering (2533 words, 28125 bytes, id 50408):       Computer engineering (CoE or CpE) is a branch of electrical engineering that integrates several fields of computer science and electronic engineering required...
+        At https://en.wikipedia.org/wiki/Computer engineering and https://en.wikipedia.org/?curid=50408
+        Last edited at 27/6/2022 3:37:42 pm
 
-    Computer graphics (computer science) (1632 words, 18720 bytes, id 18567168):    Computer graphics is a sub-field of Computer Science which studies methods for digitally synthesizing and manipulating visual content. Although the term...
-    At https://en.wikipedia.org/?curid=18567168
-    Last edited at 17/09/2019 12:21:21 AM
+        Computer science (6930 words, 72988 bytes, id 5323):    Fundamental areas of computer science Computer science is the study of computation, automation, and information. Computer science spans theoretical disciplines...
+        At https://en.wikipedia.org/wiki/Computer science and https://en.wikipedia.org/?curid=5323
+        Last edited at 3/7/2022 3:18:56 am
 
-    Computer hardware (2479 words, 22776 bytes, id 21808348):       Computer hardware includes the physical, tangible parts or components of a computer, such as the cabinet, central processing unit, monitor, keyboard,...
-    At https://en.wikipedia.org/?curid=21808348
-    Last edited at 16/10/2019 4:00:29 PM
+        Computer animation (4609 words, 40388 bytes, id 6777):  Computer animation is the process used for digitally generating animated images. The more general term computer-generated imagery (CGI) encompasses both...
+        At https://en.wikipedia.org/wiki/Computer animation and https://en.wikipedia.org/?curid=6777
+        Last edited at 16/6/2022 4:26:51 pm
 
-    *More results*
+        *More results*
 ```
 
-### Upgrading from 2.x to 3.x
+### Upgrading
+
+#### From 3.x to 4.x
+
+In 4.0, we changed `WikiSearcher` from being static, to a class that you must instantiate first. We made this change so that your program's global `HttpClient` may be passed through.
+
+To upgrade, first instantiate `WikiSearcher`, then call `Search(string searchString, WikiSearchSettings? searchSettings = null)` with the newly created `WikiSearcher`.
+
+The methods in `WikiSearchResult` for getting the URLs have also been removed, and replaced with properties. The language will have already been set to what you provided in `WikiSearchSettings`.
+
+HTTP support was also dropped, you now MUST use HTTPS.
+
+#### From 2.x to 3.x
 
 In 3.0, we simplified the namespace of Wiki.Net to `WikiDotNet`.
 
@@ -77,7 +89,7 @@ To upgrade from 2.x version of Wiki.Net to 3.x, you need to change all of the `u
 
 ## Authors
 
-**EternalClickbait** - *Initial work* - [EternalClickbait](https://github.com/EternalClickbait)
+**Ararem** (Formally EternalClickbait) - *Initial work* - [Ararem](https://github.com/Ararem)
 
 **Voltstro** - *Current Maintainer / Initial Docs Writer* - [Voltstro](https://github.com/Voltstro)
 
