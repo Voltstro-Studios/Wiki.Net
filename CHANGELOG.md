@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - WikiSearcher is now no longer static, it will have to be instantiated
     - Proxy options were removed, in favour of providing your own (global) `HttpClient`
 - `ConstantUrl` & `Url` in `WikiSearchQuery` are now properties (instead of methods) and are `Uri`s. They will not need the language to be provided anymore
+- Drop .NET 5 support for .NET 6
 
 ### Removed
 
