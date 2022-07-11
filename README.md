@@ -91,7 +91,7 @@ To upgrade from 2.x version of Wiki.Net to 3.x, you need to change all of the `u
 
 ## Authors
 
-**EternalClickbait** - *Initial work* - [EternalClickbait](https://github.com/EternalClickbait)
+**Ararem** (Formally EternalClickbait) - *Initial work* - [Ararem](https://github.com/Ararem)
 
 **Voltstro** - *Current Maintainer / Initial Docs Writer* - [Voltstro](https://github.com/Voltstro)
 
