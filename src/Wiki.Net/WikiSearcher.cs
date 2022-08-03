@@ -36,7 +36,7 @@ public class WikiSearcher
     /// </summary>
     /// <param name="searchString">The string to search for</param>
     /// <param name="searchSettings">An optional set of settings to </param>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown if <see cref="searchString"/> is null or whitespace.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if <c>searchString</c> is null or whitespace.</exception>
     /// <returns>A list of search results obtained from the Wikipedia API</returns>
     public WikiSearchResponse Search(string searchString, WikiSearchSettings? searchSettings = null)
     {
