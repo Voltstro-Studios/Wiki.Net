@@ -29,7 +29,7 @@ You can install via NuGet by adding Wiki.Net to your project's packages:
 
 ```xml
 <ItemGroup>
-    <PackageReference Include="Wiki.Net" Version="4.0.0"/>
+    <PackageReference Include="Wiki.Net" Version="4.1.0"/>
 </ItemGroup>
 ```
 

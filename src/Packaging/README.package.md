@@ -27,7 +27,7 @@ You can install via NuGet by adding Wiki.Net to your project's packages:
 
 ```xml
 <ItemGroup>
-    <PackageReference Include="Wiki.Net" Version="4.0.0"/>
+    <PackageReference Include="Wiki.Net" Version="4.1.0"/>
 </ItemGroup>
 ```
 
@@ -95,4 +95,4 @@ To upgrade from 2.x version of Wiki.Net to 3.x, you need to change all of the `u
 
 ## License
 
-This project is licensed under the MIT license – see the [LICENSE.md](https://github.com/Voltstro-Studios/Wiki.Net/blob/Development/LICENSE.md) file for details.
+This project is licensed under the MIT license – see the [LICENSE.md](https://github.com/Voltstro-Studios/Wiki.Net/blob/master/LICENSE.md) file for details.
