@@ -14,6 +14,13 @@
       "../src/Wiki.Net/bin/Release/net6.0/Wiki.Net.dll"
     ]
   },
+  "files": [
+    "**",
+    "../CHANGELOG.md"
+  ],
+  "additionalFiles": [
+    "../CHANGELOG.md"
+  ],
   "exclude": ["README.md", "VoltDocsBuilder.json", "build.ps1", ".gitignore", "obj/**/*", "_site/**/*"],
   "xref": [
     "https://docs.microsoft.com/en-us/dotnet/.xrefmap.json"

@@ -3,3 +3,6 @@
 
 - name: Basic Example
   href: basic-example.md
+
+- name: Upgrading
+  href: upgrading.md
