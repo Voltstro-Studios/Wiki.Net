@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace WikiDotNet;
 
 /// <summary>
-/// An object returned by the Wikipedia API that contains a <see cref="WikiSearchQuery" /> and <see cref="RequestId" />
+/// Contains information to an API response for a search query
 /// </summary>
 //TODO: Add Error and warning class in case
 // ReSharper disable once ClassCannotBeInstantiated

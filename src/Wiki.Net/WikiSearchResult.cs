@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace WikiDotNet;
 
 /// <summary>
-/// A single search result from a Wikipedia search
+/// Information on a returned search result
 /// </summary>
 // ReSharper disable once ClassCannotBeInstantiated
 public sealed class WikiSearchResult

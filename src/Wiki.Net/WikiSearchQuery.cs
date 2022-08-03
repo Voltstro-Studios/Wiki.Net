@@ -9,13 +9,13 @@ namespace WikiDotNet;
 public sealed class WikiSearchQuery
 {
     /// <summary>
-    /// A read-only field that contains information such as the total amount of hits the search returned
+    /// Contains information related to the search query
     /// </summary>
     // ReSharper disable once StringLiteralTypo
     [JsonProperty("searchinfo")] public readonly SearchInfo SearchInfo = null!;
 
     /// <summary>
-    /// An array of results returned from the wikipedia servers
+    /// All of the <see cref="WikiSearchResult"/> that the API returned
     /// </summary>
     [JsonProperty("search")] public readonly WikiSearchResult[] SearchResults = null!;
 
