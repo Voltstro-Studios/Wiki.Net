@@ -1,7 +1,3 @@
----
-disableMetabar: true
----
-
 # Wiki.Net API Documentation 
 
 This section contains the API reference docs for Wiki.Net.

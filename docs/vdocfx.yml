@@ -1,0 +1,23 @@
+templates:
+  - default
+defaultLocale: en-AU
+hostName: projects.voltstro.dev
+basePath: WikiNet
+globalMetadata:
+  _appTitle: WikiNet
+  _appFooter: Copyright (c) 2019-2023 Voltstro-Studios
+  _appFooterIcon: assets/images/vs-icon.png
+  menu_path: /WikiNet/menu.json
+dotnet:
+  assemblies:
+    - '../src/Wiki.Net/bin/Release/net6.0/Wiki.Net.dll'
+files:
+  - '**'
+  - '../CHANGELOG.md'
+exclude:
+  - 'README.md'
+  - '.gitignore'
+  - 'obj/**/*'
+  - '_site/**/*'
+#xref:
+#  - https://docs.microsoft.com/en-us/dotnet/.xrefmap.json
