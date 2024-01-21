@@ -8,7 +8,7 @@ You can install Wiki.Net via [NuGet](https://www.nuget.org/packages/Wiki.Net) by
 
 ```xml
 <ItemGroup>
-    <PackageReference Include="Wiki.Net" Version="4.1.0"/>
+    <PackageReference Include="Wiki.Net" Version="4.1.1"/>
 </ItemGroup>
 ```
 
