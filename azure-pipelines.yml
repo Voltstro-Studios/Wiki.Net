@@ -16,7 +16,7 @@ steps:
 - task: UseDotNet@2
   displayName: Install .NET
   inputs:
-    version: 6.0.x
+    version: 8.0.x
 
 - script: dotnet restore -v minimal src/Wiki.Net.sln
   displayName: Restore Packages
