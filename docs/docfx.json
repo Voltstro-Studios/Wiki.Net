@@ -1,0 +1,51 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../src/Wiki.Net",
+          "files": [
+            "**/*.csproj"
+          ]
+        }
+      ],
+      "dest": "api",
+      "properties": {
+        "TargetFramework": "net8.0"
+      }
+    }
+  ],
+  "build": {
+    "globalMetadata": {
+      "_appName": "WikiNet",
+      "_appTitle": "WikiNet"
+    },
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}"
+        ],
+        "exclude": [
+          "_site/**"
+        ]
+      },
+      {
+        "src": "../",
+        "files": [
+            "CHANGELOG.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+          "files": [
+              "assets/**/*"
+          ]
+      }
+    ],
+    "xrefService": [
+      "https://xref.docs.microsoft.com/query?uid={uid}"
+    ],
+    "dest": "_site"
+  }
+}
