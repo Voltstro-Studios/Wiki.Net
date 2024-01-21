@@ -1,28 +1,51 @@
 {
-  "template": "https://gitlab.com/Voltstro-Studios/doctools/volt-docfxv3-theme-package",
-  "defaultLocale": "en-au",
-  "hostName": "projects.voltstro.dev",
-  "basePath": "WikiNet",
-  "globalMetadata": {
-    "_appTitle": "Wiki.Net",
-    "_appFooter": "Copyright (c) 2019-2022 Voltstro-Studios<br>Site built with DocFX V3",
-    "_appFooterIcon": "assets/images/vs-icon.png",
-    "menu_path": "menu.yml"
-  },
-  "dotnet": {
-    "assemblies": [
-      "../src/Wiki.Net/bin/Release/net6.0/Wiki.Net.dll"
-    ]
-  },
-  "files": [
-    "**",
-    "../CHANGELOG.md"
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../src/Wiki.Net",
+          "files": [
+            "**/*.csproj"
+          ]
+        }
+      ],
+      "dest": "api",
+      "properties": {
+        "TargetFramework": "net8.0"
+      }
+    }
   ],
-  "additionalFiles": [
-    "../CHANGELOG.md"
-  ],
-  "exclude": ["README.md", "VoltDocsBuilder.json", "build.ps1", ".gitignore", "obj/**/*", "_site/**/*"],
-  "xref": [
-    "https://docs.microsoft.com/en-us/dotnet/.xrefmap.json"
-  ]
+  "build": {
+    "globalMetadata": {
+      "_appName": "WikiNet",
+      "_appTitle": "WikiNet"
+    },
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}"
+        ],
+        "exclude": [
+          "_site/**"
+        ]
+      },
+      {
+        "src": "../",
+        "files": [
+            "CHANGELOG.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+          "files": [
+              "assets/**/*"
+          ]
+      }
+    ],
+    "xrefService": [
+      "https://xref.docs.microsoft.com/query?uid={uid}"
+    ],
+    "dest": "_site"
+  }
 }

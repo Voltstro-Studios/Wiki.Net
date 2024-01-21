@@ -1,8 +1,4 @@
-- name: Overview
+- name: Articles
   href: index.md
-
 - name: Basic Example
   href: basic-example.md
-
-- name: Upgrading
-  href: upgrading.md
