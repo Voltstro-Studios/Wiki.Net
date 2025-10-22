@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace WikiDotNet;
@@ -29,7 +31,7 @@ public class WikiSearcher
     /// <summary>
     /// The path we use to get results from
     /// </summary>
-    private static string WikiGetPath => "https://{0}.wikipedia.org/w/api.php?{1}";
+    private static string WikiGetPath => "";
 
     /// <summary>
     /// Searches Wikipedia using the given <paramref name="searchString" />
@@ -40,11 +42,26 @@ public class WikiSearcher
     /// <returns>A list of search results obtained from the Wikipedia API</returns>
     public WikiSearchResponse Search(string searchString, WikiSearchSettings? searchSettings = null)
     {
+        return SearchAsync(searchString, searchSettings).GetAwaiter().GetResult();
+    }
+
+    /// <summary>
+    /// Searches Wikipedia using the given <paramref name="searchString" />
+    /// </summary>
+    /// <param name="searchString">The string to search for</param>
+    /// <param name="searchSettings">An optional set of settings to </param>
+    /// <param name="cancellationToken">Optional <see cref="CancellationToken"/> to use</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if <c>searchString</c> is null or whitespace.</exception>
+    /// <returns>A list of search results obtained from the Wikipedia API</returns>
+    public async Task<WikiSearchResponse> SearchAsync(string searchString, WikiSearchSettings? searchSettings = null, CancellationToken cancellationToken = default)
+    {
         if (string.IsNullOrWhiteSpace(searchString))
             throw new ArgumentNullException(nameof(searchString), "A search string must be provided");
-
+        
         //Encode our values to be passed to the server
-        string url;
+
+        string url = WikiSearchSettings.DefaultWikiApiUrl;
+        string userAgent = $"WikiDotNet/{ThisAssembly.AssemblyVersion}";
         string apiLanguage = "en";
         Dictionary<string, string> args = new()
         {
@@ -81,19 +98,37 @@ public class WikiSearcher
             args.Add("curtimestamp", "true");
             if (searchSettings.RequestId != null)
                 args.Add("requestid", searchSettings.RequestId);
+            
             apiLanguage = searchSettings.Language;
+            url = searchSettings.WikiApiEndpoint;
+
+            if(!string.IsNullOrWhiteSpace(searchSettings.BotUserAgent))
+                userAgent = $"{searchSettings.BotUserAgent} {userAgent}";
 
             // ReSharper restore StringLiteralTypo
         }
 
         using (FormUrlEncodedContent content = new(args))
         {
-            url = string.Format(WikiGetPath, apiLanguage, content.ReadAsStringAsync().Result);
+#if NET6_0_OR_GREATER
+            string query = await content.ReadAsStringAsync(cancellationToken);
+#else
+            string query = await content.ReadAsStringAsync();
+#endif
+            url = string.Format(url, apiLanguage, query);
         }
-
+        
+        //Request
+        using HttpRequestMessage request = new(HttpMethod.Get, url);
+        request.Headers.Add("User-Agent", userAgent);
+        
         //Get a response from the server
-        HttpResponseMessage responseMessage = client.GetAsync(url).Result;
-        string jsonResult = responseMessage.Content.ReadAsStringAsync().Result;
+        HttpResponseMessage responseMessage = await client.SendAsync(request, cancellationToken);
+#if NET6_0_OR_GREATER
+        string jsonResult = await responseMessage.Content.ReadAsStringAsync(cancellationToken);
+#else
+        string jsonResult = await responseMessage.Content.ReadAsStringAsync();
+#endif
         jsonResult = StripTags(jsonResult);
 
         WikiSearchResponse? searchResponse = JsonConvert.DeserializeObject<WikiSearchResponse>(jsonResult);

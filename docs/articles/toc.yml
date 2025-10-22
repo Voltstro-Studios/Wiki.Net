@@ -1,4 +1,8 @@
 - name: Articles
   href: index.md
-- name: Basic Example
-  href: basic-example.md
+- name: Setup
+  href: setup.md
+- name: User Agent
+  href: useragent.md
+- name: Upgrading
+  href: upgrading.md

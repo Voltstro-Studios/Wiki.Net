@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace WikiDotNet.Example;
 
 internal static class Example
 {
-    private static void Main()
+    private static async Task Main()
     {
         #region Loop until the user exits
 
         WikiSearcher searcher = new();
         WikiSearchSettings searchSettings = new()
-            { RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2, Language = "en" };
+            { RequestId = "Request ID", ResultLimit = 5, ResultOffset = 2, Language = "en", BotUserAgent = "WikiDotNet.Example/1.0 (https://github.com/Voltstro-Studios/Wiki.Net)" };
         Request:
         //Get a search from the user, or exit
         string req = AskUserString("Enter a search query, 'exit' or 'quit' to quit");
@@ -24,7 +25,7 @@ internal static class Example
         }
 
         Console.Clear();
-        PrintResults(req, searcher, searchSettings);
+        await PrintResults(req, searcher, searchSettings);
         //Wait until the user presses enter to search again
         Console.WriteLine("Press any key to search again");
         Console.ReadKey(true);
@@ -33,9 +34,9 @@ internal static class Example
         #endregion
     }
 
-    private static void PrintResults(string searchString, WikiSearcher searcher, WikiSearchSettings searchSettings)
+    private static async Task PrintResults(string searchString, WikiSearcher searcher, WikiSearchSettings searchSettings)
     {
-        WikiSearchResponse response = searcher.Search(searchString, searchSettings);
+        WikiSearchResponse response = await searcher.SearchAsync(searchString, searchSettings);
 
         Console.WriteLine($"\nResults found ({searchString}):\n");
         foreach (WikiSearchResult result in response.Query.SearchResults)

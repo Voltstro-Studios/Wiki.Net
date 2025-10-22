@@ -1,4 +1,4 @@
-# Basic Example
+# Setup
 
 This guide will show you how to install and use Wiki.Net.
 
@@ -8,7 +8,7 @@ You can install Wiki.Net via [NuGet](https://www.nuget.org/packages/Wiki.Net) by
 
 ```xml
 <ItemGroup>
-    <PackageReference Include="Wiki.Net" Version="4.1.1"/>
+    <PackageReference Include="Wiki.Net" Version="4.2.0"/>
 </ItemGroup>
 ```
 
@@ -16,7 +16,7 @@ You can install Wiki.Net via [NuGet](https://www.nuget.org/packages/Wiki.Net) by
 
 Once Wiki.Net is added to your project, you can then use it's APIs.
 
-You can search for articles via using the <xref:WikiDotNet.WikiSearcher> object. An optional <xref:System.Net.Http.HttpClient> can be passed if you have one. It is suggested to keep one global <xref:WikiDotNet.WikiSearcher> for your entire project.
+You can search for articles using the <xref:WikiDotNet.WikiSearcher> object. An optional <xref:System.Net.Http.HttpClient> can be passed if you have one.
 
 When using the <xref:WikiDotNet.WikiSearcher.Search*> method, you will need to provide the search query you want. You may also want to provide an optional <xref:WikiDotNet.WikiSearchSettings>, to control the output you get. See the API reference to see what Properties you can change.
 

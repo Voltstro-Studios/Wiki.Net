@@ -7,12 +7,9 @@
         <Nullable>enable</Nullable>
         <Title>Wiki.Net</Title>
         <Authors>Voltstro;Ararem</Authors>
-       
-        <Version>4.1.1</Version>
-        <PackageVersion>4.1.1</PackageVersion>
         
         <Company>Voltstro-Studios</Company>
-        <Copyright>Copyright (c) Voltstro-Studios 2019-2024</Copyright>
+        <Copyright>Copyright (c) Voltstro-Studios 2019-2025</Copyright>
 
         <DocumentationFile>bin\$(Configuration)\Wiki.Net.xml</DocumentationFile>
         
@@ -21,8 +18,8 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         
-        <Description>Wiki.Net – An unofficial .NET Wikipedia API wrapper</Description>
-        <PackageTags>wiki, wikipedia, wikipedia-api, API, unofficial, dotnet, dotnetstandard, csharp</PackageTags>
+        <Description>Wiki.Net – An unofficial .NET Wikipedia search API wrapper</Description>
+        <PackageTags>wiki, wikipedia, wikipedia-api, API, unofficial, dotnet, dotnetstandard, csharp, search</PackageTags>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <PackageProjectUrl>https://projects.voltstro.dev/WikiNet/</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -41,7 +38,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Nerdbank.GitVersioning" Version="3.8.118">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
     </ItemGroup>
 

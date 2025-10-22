@@ -2,7 +2,7 @@
     <div class="hero-content">
         <h1>Wiki.Net</h1>
         <div class="lead">
-            <p>Wiki.Net – An unofficial .NET Wikipedia API wrapper</p>
+            <p>Wiki.Net – An unofficial .NET Wikipedia search API wrapper</p>
         </div>
         <div class="actions">
             <a href="articles/" class="btn btn-primary btn-lg">
@@ -12,11 +12,22 @@
     </div>
 </div>
 
-<div class="highlights">
-    <section>
-        <h2>Simple to use</h2>
-        <div class="content">
-            <p>Wiki.Net provides a simple API to search Wikipedia</p>
-        </div>
-    </section>
-</div>
+### Simple to Use
+
+Install Wiki.Net using [NuGet](https://www.nuget.org/packages/Wiki.Net).
+
+```xml
+<ItemGroup>
+    <PackageReference Include="Wiki.Net" Version="4.2.0"/>
+</ItemGroup>
+```
+
+### Then Start Using
+
+Use its simple search API to search Wikipedia.
+
+```csharp
+WikiSearcher searcher = new();
+WikiSearchResponse response = searcher.Search("Computer");
+// Get results using response.Query.SearchResults
+```
