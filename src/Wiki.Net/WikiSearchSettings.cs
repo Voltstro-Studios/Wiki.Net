@@ -8,6 +8,8 @@ namespace WikiDotNet;
 /// </summary>
 public sealed class WikiSearchSettings
 {
+    internal const string DefaultWikiApiUrl = "https://{0}.wikipedia.org/w/api.php?{1}";
+    
     /// <summary>
     /// Instantiates a new <see cref="WikiSearchSettings"/> instance
     /// </summary>
@@ -91,4 +93,33 @@ public sealed class WikiSearchSettings
     /// </summary>
     // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
     public bool ExactMatch { get; set; } = false;
+
+    /// <summary>
+    /// [Backing Field] API endpoint to use
+    /// </summary>
+    private string wikiApiEndpoint = DefaultWikiApiUrl;
+    
+    /// <summary>
+    /// API endpoint to use.
+    /// <para>Defaults to <c>https://{0}.wikipedia.org/w/api.php?{1}</c></para>
+    /// </summary>
+    /// <exception cref="ArgumentException">Occurs when the given value is <see langword="null" /> or white space</exception>
+    public string WikiApiEndpoint
+    {
+        get => wikiApiEndpoint;
+        set
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException("Value cannot be null or white space!", nameof(value));
+            
+            wikiApiEndpoint = value;
+        }
+    }
+    
+    /// <summary>
+    /// Your custom user agent that will be prepended on requests made to the API. It is generally recommended to include one.
+    /// <para>Please note that the library will also include its identifier after.</para>
+    /// <seealso href="https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_User-Agent_Policy"/>
+    /// </summary>
+    public string? BotUserAgent { get; set; }
 }
