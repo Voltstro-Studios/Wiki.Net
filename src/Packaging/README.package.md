@@ -27,7 +27,7 @@ You can install via NuGet by adding Wiki.Net to your project's packages:
 
 ```xml
 <ItemGroup>
-    <PackageReference Include="Wiki.Net" Version="4.1.1"/>
+    <PackageReference Include="Wiki.Net" Version="4.2.0"/>
 </ItemGroup>
 ```
 
