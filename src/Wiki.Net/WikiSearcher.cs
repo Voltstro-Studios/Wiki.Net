@@ -50,7 +50,7 @@ public class WikiSearcher
     /// </summary>
     /// <param name="searchString">The string to search for</param>
     /// <param name="searchSettings">An optional set of settings to </param>
-    /// <param name="cancellationToken"></param>
+    /// <param name="cancellationToken">Optional <see cref="CancellationToken"/> to use</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown if <c>searchString</c> is null or whitespace.</exception>
     /// <returns>A list of search results obtained from the Wikipedia API</returns>
     public async Task<WikiSearchResponse> SearchAsync(string searchString, WikiSearchSettings? searchSettings = null, CancellationToken cancellationToken = default)

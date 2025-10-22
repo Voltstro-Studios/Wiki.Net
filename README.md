@@ -8,7 +8,7 @@
 [![Build Status)](https://img.shields.io/azure-devops/build/Voltstro-Studios/c4df32aa-4dfd-4b92-bf94-fe6c31c47b03/4/master?label=Build&logo=azure-pipelines)](https://dev.azure.com/Voltstro-Studios/Wiki.Net/_build/latest?definitionId=4&branchName=master)
 [![Discord](https://img.shields.io/badge/Discord-Voltstro-7289da.svg?logo=discord)](https://discord.voltstro.dev)
 
-Wiki.Net – An unofficial .NET Wikipedia API wrapper.
+Wiki.Net – An unofficial .NET Wikipedia search API wrapper.
 
 ## Features
 
@@ -29,7 +29,7 @@ You can install via NuGet by adding Wiki.Net to your project's packages:
 
 ```xml
 <ItemGroup>
-    <PackageReference Include="Wiki.Net" Version="4.1.1"/>
+    <PackageReference Include="Wiki.Net" Version="4.2.0"/>
 </ItemGroup>
 ```
 
@@ -71,27 +71,9 @@ Results found (Computer):
         *More results*
 ```
 
-### Upgrading
-
-#### From 3.x to 4.x
-
-In 4.0, we changed `WikiSearcher` from being static, to a class that you must instantiate first. We made this change so that your program's global `HttpClient` may be passed through.
-
-To upgrade, first instantiate `WikiSearcher`, then call `Search(string searchString, WikiSearchSettings? searchSettings = null)` with the newly created `WikiSearcher`.
-
-The methods in `WikiSearchResult` for getting the URLs have also been removed, and replaced with properties. The language will have already been set to what you provided in `WikiSearchSettings`.
-
-HTTP support was also dropped, you now MUST use HTTPS.
-
-#### From 2.x to 3.x
-
-In 3.0, we simplified the namespace of Wiki.Net to `WikiDotNet`.
-
-To upgrade from 2.x version of Wiki.Net to 3.x, you need to change all of the `using CreepysinStudios.WikiDotNet` to `using WikiDotNet` in your projects. The easiest way would just be to do a replace all in your entire solution.
-
 ## Authors
 
-**Ararem** (Formally EternalClickbait) - *Initial work* - [Ararem](https://github.com/Ararem)
+**Ararem** (Formally EternalClickbait) - *Initial work* - (Deleted Profile)
 
 **Voltstro** - *Current Maintainer / Initial Docs Writer* - [Voltstro](https://github.com/Voltstro)
 

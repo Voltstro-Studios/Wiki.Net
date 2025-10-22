@@ -9,7 +9,7 @@ namespace WikiDotNet;
 public sealed class Error
 {
     /// <summary>
-    /// What error code does this this error correspond to
+    /// What error code does this error correspond to
     /// </summary>
     [JsonProperty("code")] public readonly string Code = null!;
 
